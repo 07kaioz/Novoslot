@@ -1,26 +1,48 @@
-<div class="container">
-    <h1>Roleta</h1>
-    
-    <!-- Contêiner dos slots 3x3 -->
-    <div class="slot-container">
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
-        <div class="slot"></div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Slot Fortune Tiger</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Fortune Tiger - Slot Machine</h1>
+
+        <div id="slot-machine">
+            <div class="slot-row">
+                <div class="slot" id="slot-1"></div>
+                <div class="slot" id="slot-2"></div>
+                <div class="slot" id="slot-3"></div>
+            </div>
+            <div class="slot-row">
+                <div class="slot" id="slot-4"></div>
+                <div class="slot" id="slot-5"></div>
+                <div class="slot" id="slot-6"></div>
+            </div>
+            <div class="slot-row">
+                <div class="slot" id="slot-7"></div>
+                <div class="slot" id="slot-8"></div>
+                <div class="slot" id="slot-9"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="balance">
+                <p>Saldo: R$ <span id="balance">1000</span></p>
+            </div>
+            <div class="bet">
+                <p>Aposta: R$ <span id="bet">0.40</span></p>
+                <button id="increase-bet">+0.40</button>
+                <button id="decrease-bet">-0.40</button>
+            </div>
+            <button id="spin">Girar</button>
+        </div>
+
+        <div id="message"></div>
     </div>
 
-    <!-- Controle da roleta -->
-    <div class="controls">
-        <p class="balance">Saldo: R$ <span id="balance">1000.00</span></p>
-        <p class="bet">Aposta: R$ <span id="bet">0.40</span></p>
-        <button id="spin">Girar</button>
-        <button id="increase-bet">Aumentar Aposta</button>
-        <button id="decrease-bet">Diminuir Aposta</button>
-        <p id="message"></p>
-    </div>
-</div>
+    <script src="script.js"></script>
+</body>
+</html>
