@@ -75,27 +75,7 @@ function checkResults(results) {
     if (winnings > 0) {
         balance += winnings;
         messageElement.textContent = `Você ganhou R$ ${winnings.toFixed(2)}!`;
+        messageElement.classList.add("big-win"); // Animação de grande prêmio
     } else {
         balance -= bet;
-        messageElement.textContent = `Você perdeu R$ ${bet.toFixed(2)}.`;
-    }
-
-    updateBalance();
-}
-
-// Ações dos botões
-spinButton.addEventListener("click", spinSlots);
-
-increaseBetButton.addEventListener("click", () => {
-    bet += 0.40;
-    betElement.textContent = bet.toFixed(2);
-});
-
-decreaseBetButton.addEventListener("click", () => {
-    if (bet > 0.40) {
-        bet -= 0.40;
-        betElement.textContent = bet.toFixed(2);
-    }
-});
-
-updateBalance(); // Atualiza o saldo na inicialização
+        messageElement.textContent = `
