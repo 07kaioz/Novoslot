@@ -1,103 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 50px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #333;
+  color: white;
+  padding: 20px;
 }
 
-#game {
-    margin-top: 20px;
+h1 {
+  margin-bottom: 40px;
+  font-size: 48px;
+  color: #FFD700;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-#result {
-    margin-top: 20px;
-    font-size: 24px;
-    font-weight: bold;
-}
-const symbols = ['🍒', '🍊', '🍉', '🍇', '🍓'];  // 5 símbolos
-let spinning = false;
-
-const slotRows = document.querySelectorAll('#slot tr');
-
-function spin() {
-  if (spinning) return;
-  spinning = true;
-
-  // Número de giros e velocidade
-  const spins = 10;
-  const speed = 100; // Velocidade do giro (em milissegundos)
-
-  let count = 0;
-
-  const interval = setInterval(() => {
-    slotRows.forEach(row => {
-      const cells = row.querySelectorAll('.symbol');
-      cells.forEach(cell => {
-        const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-        cell.textContent = randomSymbol;
-      });
-    });
-
-    count++;
-
-    if (count === spins) {
-      clearInterval(interval);
-      spinning = false;
-    }
-  }, speed);
-}
-
-document.getElementById('spin-button').addEventListener('click', spin);
 #slot-machine {
-  display: inline-block;
-  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
 }
 
-#slot {
-  border-collapse: collapse;
-  margin-bottom: 20px;
+.slot {
+  position: relative;
+  width: 100px;
+  height: 300px;
+  overflow: hidden;
+  border: 3px solid #FFD700;
+  border-radius: 10px;
 }
 
 .symbol {
-  width: 80px;
-  height: 80px;
-  font-size: 50px;
-  text-align: center;
-  border: 1px solid #333;
-  background-color: #f0f0f0;
-  line-height: 80px;
-  animation: spin 0s infinite;
+  font-size: 80px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: roll 0s linear infinite;
 }
 
 button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-#spin-button {
-  margin-top: 20px;
-  background-color: #4CAF50;
-  color: white;
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: #28a745;
   border: none;
   border-radius: 5px;
+  color: white;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-#spin-button:hover {
-  background-color: #45a049;
+button:hover {
+  background-color: #218838;
 }
 
-@keyframes spin {
+@keyframes roll {
   0% {
-    transform: rotate(0deg);
+    transform: translateY(0);
   }
   100% {
-    transform: rotate(360deg);
+    transform: translateY(-500px);
   }
 }
