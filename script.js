@@ -1,16 +1,15 @@
-const symbols = ["🍊", "🔔", "🧧", "💰", "🎋", "🐯"];
+const symbols = ["🧧", "🎋", "💰", "🐯", "🍊"];
 const payouts = {
-    "🍊": 3,
-    "🔔": 5,
-    "🧧": 8,
+    "🧧": 3,
+    "🎋": 5,
     "💰": 10,
-    "🎋": 25,
-    "🐯": 250, // Wild
+    "🐯": 250, // Wild símbolo
+    "🍊": 1,
 };
 
 let balance = 1000;
 let bet = 0.40;
-let cardChance = 0; // Chance inicial de 0% para soltar a cartinha
+let cardChance = 0;
 
 const slots = document.querySelectorAll(".slot");
 const balanceElement = document.getElementById("balance");
@@ -19,68 +18,44 @@ const spinButton = document.getElementById("spin");
 const increaseBetButton = document.getElementById("increase-bet");
 const decreaseBetButton = document.getElementById("decrease-bet");
 const messageElement = document.getElementById("message");
-const cardElement = document.getElementById("card");
 
-// Atualizar o saldo
 function updateBalance() {
     balanceElement.textContent = balance.toFixed(2);
 }
 
-// Função para girar as slots
 function spinSlots() {
     const results = [];
-    const slotElements = document.querySelectorAll(".slot");
-
-    // Gira as slots
     for (let i = 0; i < 9; i++) {
         const randomIndex = Math.floor(Math.random() * symbols.length);
         results.push(symbols[randomIndex]);
-        slotElements[i].textContent = symbols[randomIndex];
+        slots[i].textContent = symbols[randomIndex];
     }
 
-    // Adiciona animação
-    slotElements.forEach((slot) => {
-        slot.style.transform = "rotate(360deg)";
-    });
-
+    cardChance += 0.10; // A cada giro, aumenta 0.10% a chance de sair a carta
     checkResults(results);
-
-    // Aumenta a chance da cartinha após cada giro
-    cardChance += 0.10;
-    checkForCard();
 }
 
-// Verificar os resultados e calcular os ganhos
 function checkResults(results) {
     const winningSymbols = [];
 
-    // Checar linhas horizontais
-    for (let i = 0; i < 3; i++) {
-        const line = results.slice(i * 3, (i + 1) * 3);
-        if (line.every(symbol => symbol === line[0])) {
-            winningSymbols.push(line[0]);
+    const lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+
+    lines.forEach(line => {
+        const [a, b, c] = line;
+        if (results[a] === results[b] && results[b] === results[c]) {
+            winningSymbols.push(results[a]);
         }
-    }
+    });
 
-    // Checar colunas verticais
-    for (let i = 0; i < 3; i++) {
-        const line = [results[i], results[i + 3], results[i + 6]];
-        if (line.every(symbol => symbol === line[0])) {
-            winningSymbols.push(line[0]);
-        }
-    }
-
-    // Checar diagonais
-    const diagonal1 = [results[0], results[4], results[8]];
-    const diagonal2 = [results[2], results[4], results[6]];
-    if (diagonal1.every(symbol => symbol === diagonal1[0])) {
-        winningSymbols.push(diagonal1[0]);
-    }
-    if (diagonal2.every(symbol => symbol === diagonal2[0])) {
-        winningSymbols.push(diagonal2[0]);
-    }
-
-    // Calcular o prêmio
     let winnings = 0;
     winningSymbols.forEach(symbol => {
         winnings += payouts[symbol] * bet;
@@ -94,16 +69,21 @@ function checkResults(results) {
         messageElement.textContent = `Você perdeu R$ ${bet.toFixed(2)}.`;
     }
 
+    if (Math.random() < cardChance) {
+        messageElement.textContent += " Você ganhou uma cartinha de bônus!";
+        cardChance = 0; // Resetando a chance de cartinha
+    }
+
     updateBalance();
 }
 
-// Função para aumentar a aposta
+spinButton.addEventListener("click", spinSlots);
+
 increaseBetButton.addEventListener("click", () => {
     bet += 0.40;
     betElement.textContent = bet.toFixed(2);
 });
 
-// Função para diminuir a aposta
 decreaseBetButton.addEventListener("click", () => {
     if (bet > 0.40) {
         bet -= 0.40;
@@ -111,22 +91,4 @@ decreaseBetButton.addEventListener("click", () => {
     }
 });
 
-// Evento de clique no botão "Girar"
-spinButton.addEventListener("click", () => {
-    spinSlots();
-    messageElement.textContent = "Girando...";
-});
-
-// Função para verificar a chance da cartinha
-function checkForCard() {
-    if (Math.random() * 100 < cardChance) {
-        cardElement.classList.remove("hidden");
-        setTimeout(() => {
-            cardElement.classList.add("hidden");
-            // Resetar a chance da carta
-            cardChance = 0;
-        }, 2000);
-    }
-}
-
-updateBalance(); // Atualizar o saldo inicial
+updateBalance();
