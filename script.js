@@ -164,5 +164,46 @@ document.getElementById('spin-button').addEventListener('click', () => {
   betAmount = parseFloat(document.getElementById('bet').value);
   spin();
 });
-
+let balance = 1000;  // Saldo inicial
+let betAmount = 10;  // Valor da aposta inicial
 document.getElementById('reset-button').addEventListener('click', resetGame);
+// Atualiza o saldo na tela
+function updateBalance() {
+  document.getElementById('balance').textContent = balance.toFixed(2);  // Atualiza o saldo
+}
+function spin() {
+  if (spinning || betAmount > balance) return;
+  spinning = true;
+  document.getElementById('result').textContent = '';  // Limpa o resultado anterior
+
+  // Deduz a aposta do saldo
+  balance -= betAmount;
+  
+  // Atualiza o saldo na tela
+  updateBalance();
+
+  // Aumenta a probabilidade de ganhar
+  winProbability += 0.1;
+
+  // Aqui inicia a rotação dos slots (o seu código já está correto para isso)
+
+  setTimeout(() => {
+    let winAmount = 0;
+    
+    // Lógica para calcular os ganhos com base nos resultados dos slots
+    // (Você já tem a lógica de payout no código)
+
+    // Se o jogador ganhou, adiciona o valor de ganho ao saldo
+    if (winAmount > 0) {
+      balance += winAmount;
+      document.getElementById('result').textContent = `Você ganhou ${winAmount.toFixed(2)} 💰!`;
+    } else {
+      document.getElementById('result').textContent = `Você perdeu!`;
+    }
+
+    // Atualiza o saldo após o giro
+    updateBalance();
+    
+    spinning = false;
+  }, 2000);  // Tempo da animação de rotação (2 segundos)
+}
