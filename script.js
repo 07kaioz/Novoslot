@@ -5,10 +5,10 @@ const payouts = {
     "🧧": 8,
     "💰": 10,
     "🎋": 25,
-    "🐯": 250, // Wild símbolo, substitui os outros
+    "🐯": 250,
 };
 
-let balance = 1004.40;
+let balance = 1000;
 let bet = 0.40;
 
 const slots = document.querySelectorAll(".slot");
@@ -19,27 +19,26 @@ const increaseBetButton = document.getElementById("increase-bet");
 const decreaseBetButton = document.getElementById("decrease-bet");
 const messageElement = document.getElementById("message");
 
-// Atualizar o saldo na tela
 function updateBalance() {
     balanceElement.textContent = balance.toFixed(2);
 }
 
-// Girar os slots
 function spinSlots() {
     const results = [];
-    for (let i = 0; i < 9; i++) {
+    slots.forEach((slot, index) => {
         const randomIndex = Math.floor(Math.random() * symbols.length);
         results.push(symbols[randomIndex]);
-        slots[i].textContent = symbols[randomIndex];
-    }
+        slot.textContent = symbols[randomIndex];
+        slot.style.animation = 'none';
+        setTimeout(() => {
+            slot.style.animation = 'rotate 1s ease-out';
+        }, 10);
+    });
     checkResults(results);
 }
 
-// Verificar resultados e calcular pagamentos
 function checkResults(results) {
     const winningSymbols = [];
-
-    // Verificando as linhas horizontais
     for (let i = 0; i < 3; i++) {
         const line = results.slice(i * 3, (i + 1) * 3);
         if (line.every(symbol => symbol === line[0])) {
@@ -47,7 +46,6 @@ function checkResults(results) {
         }
     }
 
-    // Verificando as colunas verticais
     for (let i = 0; i < 3; i++) {
         const line = [results[i], results[i + 3], results[i + 6]];
         if (line.every(symbol => symbol === line[0])) {
@@ -55,7 +53,6 @@ function checkResults(results) {
         }
     }
 
-    // Verificando as diagonais
     const diagonal1 = [results[0], results[4], results[8]];
     const diagonal2 = [results[2], results[4], results[6]];
     if (diagonal1.every(symbol => symbol === diagonal1[0])) {
@@ -65,7 +62,6 @@ function checkResults(results) {
         winningSymbols.push(diagonal2[0]);
     }
 
-    // Calcular o valor da vitória
     let winnings = 0;
     winningSymbols.forEach(symbol => {
         winnings += payouts[symbol] * bet;
@@ -73,11 +69,13 @@ function checkResults(results) {
 
     if (winnings > 0) {
         balance += winnings;
-        if (winnings > 10) {
-            // Adicionando animação para ganhos maiores que 10x
-            slots.forEach(slot => slot.style.animation = "winAnimation 1s ease");
-        }
         messageElement.textContent = `Você ganhou R$ ${winnings.toFixed(2)}!`;
+        if (winnings >= 10 * bet) {
+            document.body.classList.add("win");
+            setTimeout(() => {
+                document.body.classList.remove("win");
+            }, 500);
+        }
     } else {
         balance -= bet;
         messageElement.textContent = `Você perdeu R$ ${bet.toFixed(2)}.`;
@@ -86,13 +84,11 @@ function checkResults(results) {
     updateBalance();
 }
 
-// Ações dos botões
 spinButton.addEventListener("click", spinSlots);
 
 increaseBetButton.addEventListener("click", () => {
     bet += 0.40;
     betElement.textContent = bet.toFixed(2);
-    increaseBetButton.style.animation = "increaseBet 0.5s ease";
 });
 
 decreaseBetButton.addEventListener("click", () => {
@@ -102,4 +98,4 @@ decreaseBetButton.addEventListener("click", () => {
     }
 });
 
-updateBalance(); // Atualiza o saldo na inicialização
+updateBalance();
