@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f8f8;
-    background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/cubes.png');
+    background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/cubes.png'); /* Padrão discreto */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,50 +22,39 @@ body {
 h1 {
     font-size: 32px;
     color: #333;
+    margin-bottom: 20px;
 }
 
 .slot-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 200px;
-    margin: 20px auto;
-}
-
-.slot-row {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Três colunas */
+    grid-template-rows: repeat(3, 1fr); /* Três linhas */
+    gap: 10px;
+    justify-items: center;
+    margin-bottom: 20px;
 }
 
 .slot {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     background-color: #e5e5e5;
     border: 2px solid #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
+    font-size: 40px;
     border-radius: 10px;
     font-weight: bold;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease;
 }
 
-.controls {
-    margin-top: 20px;
+/* Animação para rotação */
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.balance {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.bet {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
+/* Estilo do botão */
 button {
     padding: 10px 20px;
     font-size: 16px;
@@ -74,7 +63,7 @@ button {
     color: #fff;
     border: none;
     border-radius: 5px;
-    margin: 5px;
+    margin: 10px;
 }
 
 button:hover {
@@ -87,38 +76,28 @@ button:hover {
     font-weight: bold;
 }
 
+.controls {
+    margin-top: 20px;
+}
+
+.balance, .bet {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Estilo de animação de vitória */
+@keyframes win-animation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.win {
+    animation: win-animation 0.5s ease-in-out;
+}
+
 footer {
-    position: absolute;
-    bottom: 20px;
-    color: #666;
+    margin-top: 30px;
     font-size: 14px;
-}
-
-/* Animação de ganho x10 */
-@keyframes winAnimation {
-    0% {
-        transform: scale(1);
-        background-color: #e5e5e5;
-    }
-    50% {
-        transform: scale(1.2);
-        background-color: #ffbf00;
-    }
-    100% {
-        transform: scale(1);
-        background-color: #e5e5e5;
-    }
-}
-
-/* Animação de aumento de aposta */
-@keyframes increaseBet {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
+    color: #777;
 }
