@@ -1,103 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Luckiest Guy', sans-serif;
+    background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/cubes.png');
     background-color: #f8f8f8;
-    background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/cubes.png'); /* Padrão discreto */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: #fff;
     margin: 0;
-    color: #333;
 }
 
 .container {
     text-align: center;
-    width: 600px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    background-color: #333;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 2px solid #fff;
 }
 
 h1 {
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 48px;
+    color: #FFD700;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .slot-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Três colunas */
-    grid-template-rows: repeat(3, 1fr); /* Três linhas */
-    gap: 10px;
-    justify-items: center;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(3, 120px);
+    grid-gap: 15px;
+    margin: 30px auto;
+    justify-content: center;
 }
 
 .slot {
-    width: 90px;
-    height: 90px;
-    background-color: #e5e5e5;
-    border: 2px solid #ccc;
+    width: 120px;
+    height: 120px;
+    background-color: #ff7f50;
+    border-radius: 15px;
+    font-size: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
-    border-radius: 10px;
+    color: white;
     font-weight: bold;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease-in-out, background-color 0.3s;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Animação para rotação */
-@keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.slot:hover {
+    background-color: #ff6347;
+    transform: scale(1.1);
 }
 
-/* Estilo do botão */
+.controls {
+    margin-top: 30px;
+}
+
+.balance,
+.bet {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
 button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 15px 25px;
+    font-size: 20px;
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #28a745;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     margin: 10px;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #218838;
 }
 
 #message {
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
+    color: #FFD700;
 }
 
-.controls {
+#card {
+    background-color: #FFD700;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    font-size: 26px;
+    color: #333;
+    animation: cardAnimation 1s ease-in-out;
     margin-top: 20px;
 }
 
-.balance, .bet {
-    font-size: 18px;
-    margin-bottom: 10px;
+#card.hidden {
+    display: none;
 }
 
-/* Estilo de animação de vitória */
-@keyframes win-animation {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #bbb;
+    font-size: 16px;
 }
 
-.win {
-    animation: win-animation 0.5s ease-in-out;
+@keyframes cardAnimation {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
-footer {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #777;
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .slot-container {
+        grid-template-columns: repeat(3, 100px);
+    }
+
+    button {
+        font-size: 18px;
+    }
 }
