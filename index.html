@@ -4,43 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roleta Fortuna</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Roleta Fortuna</h1>
 
         <div class="slot-container">
-            <div class="slot">🍊</div>
-            <div class="slot">🍊</div>
-            <div class="slot">🍊</div>
-            <div class="slot">🍊</div>
-            <div class="slot">🍊</div>
-            <div class="slot">🍊</div>
-            <div class="slot">🍊</div>
-            <div class="slot">🍊</div>
-            <div class="slot">🍊</div>
-        </div>
-
-        <div class="balance">
-            Saldo: R$ <span id="balance">1000.00</span>
-        </div>
-        <div class="bet">
-            Aposta: R$ <span id="bet">0.40</span>
+            <div class="slot" id="slot1"></div>
+            <div class="slot" id="slot2"></div>
+            <div class="slot" id="slot3"></div>
+            <div class="slot" id="slot4"></div>
+            <div class="slot" id="slot5"></div>
+            <div class="slot" id="slot6"></div>
+            <div class="slot" id="slot7"></div>
+            <div class="slot" id="slot8"></div>
+            <div class="slot" id="slot9"></div>
         </div>
 
         <div class="controls">
+            <div class="balance">
+                <p><strong>Saldo:</strong> R$ <span id="balance">1000.00</span></p>
+            </div>
+            <div class="bet">
+                <p><strong>Aposta:</strong> R$ <span id="bet">0.40</span></p>
+            </div>
             <button id="spin">Girar</button>
             <button id="increase-bet">Aumentar Aposta</button>
             <button id="decrease-bet">Diminuir Aposta</button>
         </div>
 
-        <div id="message"></div>
-    </div>
+        <div id="message" class="message"></div>
 
-    <footer>
-        <p>© 2025 Roleta Fortuna. Todos os direitos reservados.</p>
-    </footer>
+        <div id="card" class="card hidden">
+            <p>🎉 Você ganhou o bônus! 🎉</p>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Roleta Fortuna. Todos os direitos reservados.</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
