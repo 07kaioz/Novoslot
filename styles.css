@@ -19,3 +19,37 @@ button {
     font-size: 24px;
     font-weight: bold;
 }
+const symbols = ['🍒', '🍊', '🍉', '🍇', '🍓'];  // 5 símbolos
+let spinning = false;
+
+const slotRows = document.querySelectorAll('#slot tr');
+
+function spin() {
+  if (spinning) return;
+  spinning = true;
+
+  // Número de giros e velocidade
+  const spins = 10;
+  const speed = 100; // Velocidade do giro (em milissegundos)
+
+  let count = 0;
+
+  const interval = setInterval(() => {
+    slotRows.forEach(row => {
+      const cells = row.querySelectorAll('.symbol');
+      cells.forEach(cell => {
+        const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+        cell.textContent = randomSymbol;
+      });
+    });
+
+    count++;
+
+    if (count === spins) {
+      clearInterval(interval);
+      spinning = false;
+    }
+  }, speed);
+}
+
+document.getElementById('spin-button').addEventListener('click', spin);
