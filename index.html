@@ -3,54 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Roleta Fortuna - Grande Vitória!</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Ícones e fontes adicionais -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://image.shutterstock.com/image-vector/fortune-wheel-logo-icon-design-260nw-1668714749.jpg">
+    <title>Roleta Fortuna</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
-        <header class="header">
-            <h1 class="title">Roleta Fortuna</h1>
-            <div class="balance">
-                <span>Saldo:</span> R$ <span id="balance">1000.00</span>
+        <h1>Roleta Fortuna</h1>
+        <div class="balance">
+            <span>Saldo: R$ <span id="balance">1004.40</span></span>
+        </div>
+        <div class="slot-container">
+            <div class="slot-row">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
             </div>
-        </header>
-
-        <div class="game-board">
-            <div class="slot-container">
-                <div class="slot" id="slot-1"></div>
-                <div class="slot" id="slot-2"></div>
-                <div class="slot" id="slot-3"></div>
-                <div class="slot" id="slot-4"></div>
-                <div class="slot" id="slot-5"></div>
-                <div class="slot" id="slot-6"></div>
-                <div class="slot" id="slot-7"></div>
-                <div class="slot" id="slot-8"></div>
-                <div class="slot" id="slot-9"></div>
+            <div class="slot-row">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
             </div>
-            <div class="controls">
-                <div class="bet">
-                    <span>Aposta:</span> R$ <span id="bet">0.40</span>
-                </div>
-                <button id="spin" class="btn btn-spin">Girar</button>
-                <div class="bet-controls">
-                    <button id="increase-bet" class="btn btn-bet">Aumentar Aposta</button>
-                    <button id="decrease-bet" class="btn btn-bet">Diminuir Aposta</button>
-                </div>
+            <div class="slot-row">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
             </div>
         </div>
-
-        <div id="message" class="message"></div>
+        <div class="controls">
+            <div class="bet">Aposta: R$ <span id="bet">0.40</span></div>
+            <button id="spin">Girar</button>
+            <button id="increase-bet">Aumentar Aposta</button>
+            <button id="decrease-bet">Diminuir Aposta</button>
+        </div>
+        <div id="message"></div>
     </div>
-
     <footer>
-        <p>&copy; 2025 Roleta Fortuna. Todos os direitos reservados.</p>
+        <p>© 2025 Roleta Fortuna. Todos os direitos reservados.</p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
