@@ -1,4 +1,3 @@
-// Símbolos e valores
 const symbols = ["🍊", "🔔", "🧧", "💰", "🎋", "🐯"];
 const payouts = {
     "🍊": 3,
@@ -9,7 +8,7 @@ const payouts = {
     "🐯": 250, // Wild símbolo, substitui os outros
 };
 
-let balance = 1000;
+let balance = 1004.40;
 let bet = 0.40;
 
 const slots = document.querySelectorAll(".slot");
@@ -74,8 +73,33 @@ function checkResults(results) {
 
     if (winnings > 0) {
         balance += winnings;
+        if (winnings > 10) {
+            // Adicionando animação para ganhos maiores que 10x
+            slots.forEach(slot => slot.style.animation = "winAnimation 1s ease");
+        }
         messageElement.textContent = `Você ganhou R$ ${winnings.toFixed(2)}!`;
-        messageElement.classList.add("big-win"); // Animação de grande prêmio
     } else {
         balance -= bet;
-        messageElement.textContent = `
+        messageElement.textContent = `Você perdeu R$ ${bet.toFixed(2)}.`;
+    }
+
+    updateBalance();
+}
+
+// Ações dos botões
+spinButton.addEventListener("click", spinSlots);
+
+increaseBetButton.addEventListener("click", () => {
+    bet += 0.40;
+    betElement.textContent = bet.toFixed(2);
+    increaseBetButton.style.animation = "increaseBet 0.5s ease";
+});
+
+decreaseBetButton.addEventListener("click", () => {
+    if (bet > 0.40) {
+        bet -= 0.40;
+        betElement.textContent = bet.toFixed(2);
+    }
+});
+
+updateBalance(); // Atualiza o saldo na inicialização
