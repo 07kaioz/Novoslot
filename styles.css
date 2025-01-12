@@ -58,11 +58,13 @@ body {
 }
 
 .slot-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    grid-template-rows: repeat(3, 1fr);    /* 3 linhas */
     gap: 10px;
+    margin-bottom: 20px;
+    width: 300px; /* Ajuste a largura total da roleta */
+    height: 300px; /* Ajuste a altura total da roleta */
 }
 
 .slot {
