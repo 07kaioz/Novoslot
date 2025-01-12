@@ -5,144 +5,88 @@
 }
 
 body {
-    font-family: 'Luckiest Guy', sans-serif;
-    background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/cubes.png');
+    font-family: 'Roboto', sans-serif;
     background-color: #f8f8f8;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #fff;
     margin: 0;
+    color: #333;
 }
 
 .container {
     text-align: center;
-    width: 800px;
-    background-color: #333;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    border: 2px solid #fff;
+    width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    font-size: 48px;
-    color: #FFD700;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    font-size: 32px;
+    color: #333;
 }
 
-.slot-container {
-    display: grid;
-    grid-template-columns: repeat(3, 120px);
-    grid-gap: 15px;
-    margin: 30px auto;
+.slot-row {
+    display: flex;
     justify-content: center;
+    margin: 10px 0;
 }
 
 .slot {
-    width: 120px;
-    height: 120px;
-    background-color: #ff7f50;
-    border-radius: 15px;
-    font-size: 55px;
+    width: 80px;
+    height: 80px;
+    background-color: #e5e5e5;
+    border: 2px solid #ccc;
+    margin: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    font-size: 32px;
+    border-radius: 10px;
     font-weight: bold;
-    transition: transform 0.4s ease-in-out, background-color 0.3s;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .slot:hover {
-    background-color: #ff6347;
     transform: scale(1.1);
 }
 
 .controls {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
-.balance,
-.bet {
-    font-size: 24px;
-    margin-bottom: 15px;
+.balance, .bet {
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 button {
-    padding: 15px 25px;
-    font-size: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    background-color: #28a745;
+    background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 12px;
-    margin: 10px;
-    transition: background-color 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    margin: 5px;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 
 #message {
     margin-top: 20px;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
-    color: #FFD700;
+    color: green;
 }
 
-#card {
-    background-color: #FFD700;
-    padding: 20px;
-    border-radius: 10px;
-    display: none;
-    font-size: 26px;
-    color: #333;
-    animation: cardAnimation 1s ease-in-out;
+footer {
     margin-top: 20px;
-}
-
-#card.hidden {
-    display: none;
-}
-
-.footer {
-    text-align: center;
-    margin-top: 50px;
-    color: #bbb;
-    font-size: 16px;
-}
-
-@keyframes cardAnimation {
-    0% {
-        transform: scale(0);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-    }
-
-    h1 {
-        font-size: 36px;
-    }
-
-    .slot-container {
-        grid-template-columns: repeat(3, 100px);
-    }
-
-    button {
-        font-size: 18px;
-    }
+    font-size: 14px;
+    color: #777;
 }
