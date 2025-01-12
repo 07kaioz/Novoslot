@@ -1,99 +1,170 @@
- body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
+/* Reset básico e fontes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(145deg, #6a5acd, #00bfff);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    color: #333;
+    min-height: 100vh;
+    color: #fff;
+    flex-direction: column;
 }
 
 .container {
     text-align: center;
-    width: 600px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 40px 20px;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    font-size: 32px;
-    color: #333;
-}
-
-.slot-row {
+.header {
     display: flex;
-    justify-content: center;
-    margin: 10px 0;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.slot {
-    width: 80px;
-    height: 80px;
-    background-color: #e5e5e5;
-    border: 2px solid #ccc;
-    margin: 5px;
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffdd57;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.balance {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.game-board {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
-    border-radius: 10px;
-    font-weight: bold;
 }
 
-/* Adicionando estilo para o layout de 3x3 usando Flexbox */
 .slot-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 260px;  /* Ajuste para a largura total da roleta */
-    margin: 0 auto;
+    margin-bottom: 20px;
+    gap: 10px;
 }
 
-.controls {
-    margin-top: 20px;
-}
-
-.balance {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.bet {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #007bff;
+.slot {
+    width: 90px;
+    height: 90px;
+    background: #1e1e1e;
+    border-radius: 15px;
     color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin: 5px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-#message {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
-    background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/cubes.png'); /* Padrão discreto */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    color: #333;
+    font-size: 40px;
+    font-weight: bold;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.slot:hover {
+    background-color: #ff6f00;
+    transform: scale(1.1);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bet {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    background-color: #28a745;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.btn {
+    font-size: 18px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-spin {
+    background-color: #dc3545;
+}
+
+.btn-bet {
+    background-color: #007bff;
+}
+
+.bet-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffdd57;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Animações de vitória */
+.big-win {
+    font-size: 30px;
+    color: gold;
+    text-transform: uppercase;
+    animation: bigWinEffect 1.5s ease-out forwards;
+}
+
+@keyframes bigWinEffect {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.4);
+        opacity: 1.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+footer {
+    margin-top: 50px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
 }
