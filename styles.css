@@ -30,17 +30,22 @@ h1 {
 }
 
 .slot {
-    width: 80px;
-    height: 80px;
-    background-color: #e5e5e5;
+    width: 100px;   /* Aumentado para maior tamanho */
+    height: 100px;  /* Aumentado para maior tamanho */
+    background-color: #f0f0f0;
     border: 2px solid #ccc;
     margin: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
+    font-size: 50px; /* Maior tamanho de fonte */
     border-radius: 10px;
     font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.slot:hover {
+    background-color: #f8f8f8; /* Cor de fundo ao passar o mouse */
 }
 
 .controls {
