@@ -3,122 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎰 Slot 3x3 - Cassino 🎰</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Máquina de Slot - Fortune Tiger</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>🎰 Slot 3x3 - Cassino 🎰</h1>
-    
-    <!-- Máquina de Slot -->
-    <div id="slot-machine">
-      <div class="slot" id="slot1">
-        <div class="symbol">🍒</div>
-        <div class="symbol">🍊</div>
-        <div class="symbol">🍉</div>
-        <div class="symbol">🍇</div>
-        <div class="symbol">🍓</div>
-      </div>
-      <div class="slot" id="slot2">
-        <div class="symbol">🍒</div>
-        <div class="symbol">🍊</div>
-        <div class="symbol">🍉</div>
-        <div class="symbol">🍇</div>
-        <div class="symbol">🍓</div>
-      </div>
-      <div class="slot" id="slot3">
-        <div class="symbol">🍒</div>
-        <div class="symbol">🍊</div>
-        <div class="symbol">🍉</div>
-        <div class="symbol">🍇</div>
-        <div class="symbol">🍓</div>
+    <div id="info" class="info-container">
+      <h1 class="title">Máquina de Slot</h1>
+      <p id="balanceText">Saldo: <span id="balance">1000.00</span> 💰</p>
+      <div class="bet-controls">
+        <button id="decreaseBet" class="bet-button">- 0.40</button>
+        <input type="number" id="bet" class="bet-input" value="10.00" readonly>
+        <button id="increaseBet" class="bet-button">+ 0.40</button>
       </div>
     </div>
 
-    <!-- Botão para Girar -->
-    <div class="buttons">
-      <button id="spin-button">Girar</button>
-      <button id="reset-button">Resetar</button>
+    <div id="slots" class="slots-container">
+      <div id="slot1" class="slot"></div>
+      <div id="slot2" class="slot"></div>
+      <div id="slot3" class="slot"></div>
     </div>
-    
-    <!-- Resultado da rodada -->
-    <div id="result"></div>
+
+    <div class="controls">
+      <button id="spinButton" class="spin-button" onclick="spin()">Girar</button>
+    </div>
+
+    <div id="result" class="result-container">
+      <p id="resultText"></p>
+    </div>
   </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
-<!-- Adicionar a exibição do saldo e o valor da aposta -->
-<div id="info">
-  <p>Saldo: <span id="balance">1000</span> 💰</p>
-  <label for="bet">Valor da Aposta:</label>
-  <input type="number" id="bet" value="10" min="1">
-</div>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slot Machine</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="info" style="text-align: center; margin-bottom: 20px;">
-    <p style="font-size: 24px;">Saldo: <span id="balance" style="font-size: 32px;">1000</span> 💰</p>
-    <label for="bet" style="font-size: 18px;">Valor da Aposta:</label>
-    <br />
-    <button id="decreaseBet" style="font-size: 18px;">- 0.40</button>
-    <input type="number" id="bet" value="10" min="1" style="font-size: 18px; width: 80px; text-align: center;">
-    <button id="increaseBet" style="font-size: 18px;">+ 0.40</button>
-  </div>
-
-  <div id="slots" style="text-align: center; margin-bottom: 20px;">
-    <div id="slot1" class="slot"></div>
-    <div id="slot2" class="slot"></div>
-    <div id="slot3" class="slot"></div>
-  </div>
-
-  <div style="text-align: center;">
-    <button onclick="spin()" id="spinButton" style="font-size: 24px; padding: 20px 40px;">Girar</button>
-  </div>
-
-  <p id="result" style="text-align: center; font-size: 20px;"></p>
-
-  <script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slot Machine</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Info: Saldo e aposta -->
-  <div id="info" style="text-align: center; margin-bottom: 20px;">
-    <p style="font-size: 24px;">Saldo: <span id="balance" style="font-size: 32px;">1000</span> 💰</p>
-    <label for="bet" style="font-size: 18px;">Valor da Aposta:</label>
-    <br />
-    <button id="decreaseBet" style="font-size: 18px;">- 0.40</button>
-    <input type="number" id="bet" value="10" min="1" style="font-size: 18px; width: 80px; text-align: center;">
-    <button id="increaseBet" style="font-size: 18px;">+ 0.40</button>
-  </div>
-
-  <!-- Slot machine -->
-  <div id="slots" style="text-align: center; margin-bottom: 20px;">
-    <div id="slot1" class="slot"></div>
-    <div id="slot2" class="slot"></div>
-    <div id="slot3" class="slot"></div>
-  </div>
-
-  <!-- Novo botão de girar -->
-  <div style="text-align: center;">
-    <button onclick="spin()" id="spinButton" style="font-size: 24px; padding: 20px 40px;">Girar</button>
-  </div>
-
-  <p id="result" style="text-align: center; font-size: 20px;"></p>
 
   <script src="script.js"></script>
 </body>
