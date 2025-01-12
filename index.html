@@ -3,37 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slot 3x3 Cassino</title>
+  <title>🎰 Slot 3x3 - Cassino 🎰</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Slot 3x3 - Cassino</h1>
+  <div class="container">
+    <h1>🎰 Slot 3x3 - Cassino 🎰</h1>
+    
+    <!-- Máquina de Slot -->
+    <div id="slot-machine">
+      <div class="slot" id="slot1">
+        <div class="symbol">🍒</div>
+        <div class="symbol">🍊</div>
+        <div class="symbol">🍉</div>
+        <div class="symbol">🍇</div>
+        <div class="symbol">🍓</div>
+      </div>
+      <div class="slot" id="slot2">
+        <div class="symbol">🍒</div>
+        <div class="symbol">🍊</div>
+        <div class="symbol">🍉</div>
+        <div class="symbol">🍇</div>
+        <div class="symbol">🍓</div>
+      </div>
+      <div class="slot" id="slot3">
+        <div class="symbol">🍒</div>
+        <div class="symbol">🍊</div>
+        <div class="symbol">🍉</div>
+        <div class="symbol">🍇</div>
+        <div class="symbol">🍓</div>
+      </div>
+    </div>
 
-  <div id="slot-machine">
-    <div class="slot" id="slot1">
-      <div class="symbol">🍒</div>
-      <div class="symbol">🍊</div>
-      <div class="symbol">🍉</div>
-      <div class="symbol">🍇</div>
-      <div class="symbol">🍓</div>
+    <!-- Botão para Girar -->
+    <div class="buttons">
+      <button id="spin-button">Girar</button>
+      <button id="reset-button">Resetar</button>
     </div>
-    <div class="slot" id="slot2">
-      <div class="symbol">🍒</div>
-      <div class="symbol">🍊</div>
-      <div class="symbol">🍉</div>
-      <div class="symbol">🍇</div>
-      <div class="symbol">🍓</div>
-    </div>
-    <div class="slot" id="slot3">
-      <div class="symbol">🍒</div>
-      <div class="symbol">🍊</div>
-      <div class="symbol">🍉</div>
-      <div class="symbol">🍇</div>
-      <div class="symbol">🍓</div>
-    </div>
+    
+    <!-- Resultado da rodada -->
+    <div id="result"></div>
   </div>
-
-  <button id="spin-button">Girar</button>
 
   <script src="script.js"></script>
 </body>
