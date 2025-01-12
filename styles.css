@@ -63,13 +63,13 @@ body {
     grid-template-rows: repeat(3, 1fr);    /* 3 linhas */
     gap: 10px;
     margin-bottom: 20px;
-    width: 300px; /* Ajuste a largura total da roleta */
-    height: 300px; /* Ajuste a altura total da roleta */
+    width: 270px; /* Ajuste a largura total da roleta */
+    height: 270px; /* Ajuste a altura total da roleta */
 }
 
 .slot {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     background: #1e1e1e;
     border-radius: 15px;
     color: #fff;
@@ -163,6 +163,27 @@ body {
     }
 }
 
+/* Animação de destaque ao multiplicar aposta por x10 */
+@keyframes betMultiplierEffect {
+    0% {
+        transform: scale(1);
+        background-color: #28a745;
+    }
+    50% {
+        transform: scale(1.2);
+        background-color: #ffcc00;
+    }
+    100% {
+        transform: scale(1);
+        background-color: #28a745;
+    }
+}
+
+.bet-multiplied {
+    animation: betMultiplierEffect 1s ease-out;
+}
+
+/* Rodapé */
 footer {
     margin-top: 50px;
     color: #fff;
