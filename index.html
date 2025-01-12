@@ -1,76 +1,48 @@
- <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Máquina de Slot - Fortune Tiger</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <div id="info" class="info-container">
-      <h1 class="title">Máquina de Slot</h1>
-      <p id="balanceText">Saldo: <span id="balance">1000.00</span> 💰</p>
-      <div class="bet-controls">
-        <button id="decreaseBet" class="bet-button">- 0.40</button>
-        <input type="number" id="bet" class="bet-input" value="10.00" readonly>
-        <button id="increaseBet" class="bet-button">+ 0.40</button>
-      </div>
-    </div>
-
-    <div id="slots" class="slots-container">
-      <div id="slot1" class="slot"></div>
-      <div id="slot2" class="slot"></div>
-      <div id="slot3" class="slot"></div>
-    </div>
-
-    <div class="controls">
-      <button id="spinButton" class="spin-button" onclick="spin()">Girar</button>
-    </div>
-
-    <div id="result" class="result-container">
-      <p id="resultText"></p>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Máquina de Slot - Fortune Tiger</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Slot Fortune Tiger</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <div id="info" class="info-container">
-      <h1 class="title">Máquina de Slot</h1>
-      <p id="balanceText">Saldo: <span id="balance">1000.00</span> 💰</p>
-      <div class="bet-controls">
-        <button id="decreaseBet" class="bet-button">- 0.40</button>
-        <input type="number" id="bet" class="bet-input" value="10.00" readonly>
-        <button id="increaseBet" class="bet-button">+ 0.40</button>
-      </div>
+    <div class="container">
+        <h1>Fortune Tiger - Slot Machine</h1>
+
+        <div id="slot-machine">
+            <div class="slot-row">
+                <div class="slot" id="slot-1"></div>
+                <div class="slot" id="slot-2"></div>
+                <div class="slot" id="slot-3"></div>
+            </div>
+            <div class="slot-row">
+                <div class="slot" id="slot-4"></div>
+                <div class="slot" id="slot-5"></div>
+                <div class="slot" id="slot-6"></div>
+            </div>
+            <div class="slot-row">
+                <div class="slot" id="slot-7"></div>
+                <div class="slot" id="slot-8"></div>
+                <div class="slot" id="slot-9"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="balance">
+                <p>Saldo: R$ <span id="balance">1000</span></p>
+            </div>
+            <div class="bet">
+                <p>Aposta: R$ <span id="bet">0.40</span></p>
+                <button id="increase-bet">+0.40</button>
+                <button id="decrease-bet">-0.40</button>
+            </div>
+            <button id="spin">Girar</button>
+        </div>
+
+        <div id="message"></div>
     </div>
 
-    <div id="slots" class="slots-container">
-      <div id="slot1" class="slot">🍒</div>
-      <div id="slot2" class="slot">🍉</div>
-      <div id="slot3" class="slot">🍋</div>
-    </div>
-
-    <div class="controls">
-      <button id="spinButton" class="spin-button" onclick="spin()">Girar</button>
-    </div>
-
-    <div id="result" class="result-container">
-      <p id="resultText"></p>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
