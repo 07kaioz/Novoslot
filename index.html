@@ -1,51 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roleta Fortuna - Fortune Tiger</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fortune Tiger Slot</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Roleta Fortuna - Fortune Tiger</h1>
-        
-        <div class="slots">
-            <div class="slot-row">
-                <div class="slot">🧧</div>
-                <div class="slot">🎋</div>
-                <div class="slot">💰</div>
-            </div>
-            <div class="slot-row">
-                <div class="slot">🐯</div>
-                <div class="slot">🍊</div>
-                <div class="slot">🧧</div>
-            </div>
-            <div class="slot-row">
-                <div class="slot">💰</div>
-                <div class="slot">🎋</div>
-                <div class="slot">🐯</div>
-            </div>
-        </div>
-
-        <div class="controls">
-            <div class="balance">
-                <strong>Saldo:</strong> R$ <span id="balance">1000.00</span>
-            </div>
-            <div class="bet">
-                <strong>Aposta:</strong> R$ <span id="bet">0.40</span>
-            </div>
-            <button id="spin">Girar</button>
-            <button id="increase-bet">Aumentar Aposta</button>
-            <button id="decrease-bet">Diminuir Aposta</button>
-        </div>
-
-        <div id="message" class="message"></div>
-
-        <footer>© 2025 Roleta Fortuna. Todos os direitos reservados.</footer>
+  <div class="game-container">
+    <div class="game-header">Fortune Tiger Slot</div>
+    <div class="slot-machine">
+      <div class="reel" id="reel1"></div>
+      <div class="reel" id="reel2"></div>
+      <div class="reel" id="reel3"></div>
     </div>
-
-    <script src="script.js"></script>
+    <div class="controls">
+      <label for="bet">Bet:</label>
+      <input type="number" id="bet" min="1" value="1">
+      <button id="spin-button">Spin</button>
+    </div>
+    <div class="payout-info" id="payout-info"></div>
+    <div class="game-footer">Good Luck!</div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
