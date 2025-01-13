@@ -69,6 +69,19 @@ header {
     animation: airplaneFly 5s linear infinite;
 }
 
+.explosion {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 0, 0, 0.6);
+    border-radius: 50%;
+    animation: explode 1s ease-out;
+}
+
 @keyframes airplaneFly {
     0% {
         left: 0%;
@@ -77,6 +90,17 @@ header {
     100% {
         left: 100%;
         top: 50%;
+    }
+}
+
+@keyframes explode {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2) translate(-50%, -50%);
     }
 }
 
@@ -90,7 +114,7 @@ header {
 }
 
 /* Botões e Interações */
-.controls-section {
+.controls {
     margin: 30px 0;
 }
 
@@ -115,20 +139,20 @@ header {
     transform: scale(0.95);
 }
 
-.btn-reset-balance {
+.btn-reset {
     background-color: #dc3545;
 }
 
-.btn-reset-balance:hover {
+.btn-reset:hover {
     background-color: #c82333;
 }
 
-.btn-reset-balance:active {
+.btn-reset:active {
     background-color: #bd2130;
 }
 
 /* Saldo */
-.balance-display {
+.balance {
     margin: 20px 0;
     font-size: 1.5rem;
     font-weight: bold;
@@ -154,63 +178,72 @@ header {
 .instructions ol {
     list-style-type: decimal;
     margin-left: 20px;
-    color: #ddd;
 }
 
 .instructions li {
-    margin-bottom: 10px;
+    margin: 10px 0;
+    font-size: 1.1rem;
 }
 
-/* Tabela de Estatísticas */
-.stats-section {
-    margin-top: 30px;
-    background-color: #222;
+/* Estatísticas */
+.stats {
+    background-color: #444;
     padding: 20px;
     border-radius: 10px;
 }
 
-.stats-section h2 {
-    font-size: 2rem;
-    color: #ffcc00;
-    margin-bottom: 15px;
-}
-
-table {
+#statsTable {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
 }
 
-th, td {
+#statsTable th, #statsTable td {
     padding: 10px;
     text-align: center;
-    font-size: 1.1rem;
-    border: 1px solid #444;
-}
-
-th {
-    background-color: #333;
-    color: #ffcc00;
-}
-
-td {
-    background-color: #444;
-}
-
-tr:nth-child(even) {
-    background-color: #555;
-}
-
-/* Rodapé */
-footer {
-    margin-top: 40px;
     font-size: 1rem;
-    color: #bbb;
-    background-color: #111;
-    padding: 10px 0;
-    border-radius: 5px;
 }
 
-footer p {
-    margin: 0;
+#statsTable th {
+    background-color: #28a745;
+    color: #fff;
+}
+
+#statsTable td {
+    background-color: #555;
+    color: #ddd;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+/* Efeitos Adicionais */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .balance {
+        font-size: 1.3rem;
+    }
+
+    .controls {
+        margin: 15px 0;
+    }
+
+    .instructions ol {
+        font-size: 1rem;
+    }
 }
