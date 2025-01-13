@@ -1,53 +1,57 @@
+/* Estilos gerais e fundo */
 body {
-  background: linear-gradient(to bottom, #ff6a00, #ee0979); /* Gradiente vibrante com cores quentes */
-  font-family: 'Arial', sans-serif;
-  text-align: center;
-  color: white;
   margin: 0;
   padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: url('https://via.placeholder.com/1200x800/ff6a00/ffffff?text=Fortune+Tiger') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  overflow: hidden;
 }
 
 .game-container {
-  width: 80%;
+  width: 90%;
   max-width: 900px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro com transparência */
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 20px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  text-align: center;
 }
 
 h1 {
-  margin-bottom: 40px;
-  font-size: 40px;
+  font-size: 50px;
+  margin-bottom: 30px;
   color: #ffeb3b;
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+  letter-spacing: 2px;
 }
 
 .game-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #ff6347;
+  margin-bottom: 30px;
 }
 
 .info-item {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 12px 24px;
   background-color: #ff4500;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 18px;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
 }
 
 button:hover {
@@ -57,45 +61,43 @@ button:hover {
 
 .slot-machine {
   display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
   padding: 20px;
-  border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  position: relative;
 }
 
 .row {
   display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 50px;
   gap: 20px;
+  font-size: 50px;
 }
 
 .slot {
-  padding: 20px;
+  padding: 15px 25px;
   background-color: #ff6347;
-  border-radius: 15px;
-  margin: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  opacity: 0.9;
-  transition: transform 0.5s ease;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
 }
 
 .slot:hover {
   transform: scale(1.2);
-  opacity: 1;
 }
 
 #spinButton {
   margin-top: 40px;
-  padding: 15px 30px;
+  padding: 20px 40px;
   background-color: #ff6347;
   border-radius: 10px;
   font-size: 24px;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
@@ -106,7 +108,7 @@ button:hover {
 
 #message {
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   color: #ffeb3b;
   animation: pulse 1.5s infinite;
