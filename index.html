@@ -1,20 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caça-Níqueis Virtual</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aviator Game</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="slot-machine">
-        <div class="reel" id="reel1">🍒</div>
-        <div class="reel" id="reel2">🍋</div>
-        <div class="reel" id="reel3">🍉</div>
-    </div>
-    <button id="spinButton">Girar</button>
-    <div id="result"></div>
+  <div class="game-container">
+    <header>
+      <h1>Aviator Game</h1>
+      <p>Faça sua aposta antes do avião decolar!</p>
+    </header>
+    
+    <div class="game-board">
+      <div class="airplane">
+        <img src="aviator-plane.png" alt="Avião" id="airplane">
+      </div>
 
-    <script src="script.js"></script>
+      <div class="game-info">
+        <div class="multiplier">
+          <span>Multiplicador: </span><span id="multiplier">1x</span>
+        </div>
+        
+        <input type="number" id="betAmount" placeholder="R$ 1,00" min="1">
+        <button id="betButton" onclick="placeBet()">Apostar</button>
+        
+        <div class="total-bet">
+          <span>Total Apostado: </span><span id="totalBet">R$ 0,00</span>
+        </div>
+        
+        <button id="resetButton" onclick="resetGame()">Reiniciar Jogo</button>
+      </div>
+    </div>
+    
+    <div class="history">
+      <h3>Histórico de Apostas</h3>
+      <ul id="betHistory"></ul>
+    </div>
+    
+    <footer>
+      <p>&copy; 2025 Aviator Game. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
