@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,37 +7,38 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <header class="header">
+            <h1>Jogo Aviator</h1>
+            <p>Tente ganhar antes que o avião exploda!</p>
+        </header>
 
-<div class="container">
-    <div class="header">
-        <h1>Jogo Aviator</h1>
-        <p>Aposte e ganhe com o multiplicador do avião!</p>
-        <p>Saldo: <span id="balance">R$ 100,00</span></p> <!-- Exibição de saldo -->
-    </div>
-    
-    <div class="game-area">
-        <div class="sky"></div>
-        <div id="airplane" class="airplane"></div>
-        
-        <div class="info">
-            <p>Aposta: <span id="totalBet">R$ 0,00</span></p>
-            <p>Multiplicador: <span id="multiplier">1x</span></p>
+        <div class="game-area">
+            <div id="multiplier">1.00x</div>
+            <div id="airplane" class="airplane"></div>
+        </div>
+
+        <div id="balance">Saldo: R$100,00</div>
+        <div class="controls">
+            <input id="betAmount" class="input-bet" type="number" placeholder="Insira sua aposta">
+            <button id="betButton" class="btn">Apostar</button>
+            <button id="withdrawButton" class="btn btn-reset">Retirar</button>
+        </div>
+
+        <div class="history">
+            <h3>Histórico de Apostas</h3>
+            <ul id="betHistory"></ul>
         </div>
     </div>
 
-    <div class="controls">
-        <input type="number" id="betAmount" class="input-bet" placeholder="Valor da aposta">
-        <button id="betButton" class="btn">Apostar</button>
-        <button id="withdrawButton" class="btn">Retirar</button>
-        <button id="resetButton" class="btn-reset">Resetar</button>
-    </div>
+    <footer>
+        <p>© 2025 Jogo Aviator. Todos os direitos reservados.</p>
+    </footer>
 
-    <div class="history">
-        <h3>Histórico de Apostas</h3>
-        <ul id="betHistory"></ul>
-    </div>
-</div>
+    <audio id="flightSound" src="https://freesound.org/data/previews/322/322682_5260876-lq.mp3" preload="auto"></audio>
+    <audio id="explosionSound" src="https://freesound.org/data/previews/178/178772_334653-lq.mp3" preload="auto"></audio>
+    <audio id="winSound" src="https://freesound.org/data/previews/466/466879_1001462-lq.mp3" preload="auto"></audio>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
