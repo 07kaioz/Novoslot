@@ -38,6 +38,13 @@ body {
     animation: fadeIn 3s ease-in-out;
 }
 
+/* Exibição de Saldo */
+#balance {
+    font-size: 1.6rem;
+    color: #ff5722;
+    font-weight: bold;
+}
+
 /* Animação de movimento da tela */
 @keyframes bounce {
     0%, 100% {
