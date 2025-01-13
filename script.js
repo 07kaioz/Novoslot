@@ -1,89 +1,163 @@
-// Função para reiniciar o saldo
-function resetBalance() {
-    balance = 100.0; // Redefine o saldo para 100 reais
-    updateBalance(); // Atualiza a exibição do saldo
-    alert("Saldo reiniciado para R$100,00!");
-}
-
-// Evento do botão de reinício do saldo
-document.getElementById("resetBalanceButton").addEventListener("click", resetBalance);let balance = 100.0;
-let betAmount = 0;
-let currentMultiplier = 1.0;
-let explosionThreshold = 0;
+// Variáveis principais
+let balance = 100;
+let betAmount = 1;
+let currentMultiplier = 1;
+let isFlying = false;
+let isCrashed = false;
 let betPlaced = false;
+let stats = [];
+
+// Seletores
+const multiplierDisplay = document.getElementById('multiplier');
+const airplane = document.getElementById('airplane');
+const balanceDisplay = document.getElementById('balance');
+const betButton = document.getElementById('betButton');
+const cashOutButton = document.getElementById('cashOutButton');
+const resetBalanceButton = document.getElementById('resetBalanceButton');
+const statsTable = document.getElementById('statsTable');
 
 // Sons
-const flightSound = document.getElementById("flightSound");
-const explosionSound = document.getElementById("explosionSound");
-const winSound = document.getElementById("winSound");
+const crashSound = new Audio('https://www.soundjay.com/button/beep-07.wav');  // Som de crash
+const winSound = new Audio('https://www.soundjay.com/button/beep-09.wav');  // Som de vitória
 
-// Elementos do DOM
-const multiplierDisplay = document.getElementById("multiplier");
-const airplane = document.getElementById("airplane");
-const balanceDisplay = document.getElementById("balance");
-const betHistory = document.getElementById("betHistory");
-
+// Função de atualizar o saldo
 function updateBalance() {
-    balanceDisplay.textContent = `Saldo: R$${balance.toFixed(2)}`;
+    balanceDisplay.innerText = `Saldo: R$${balance.toFixed(2)}`;
 }
 
-function generateExplosionThreshold() {
-    const random = Math.random();
-    if (random < 0.066) return 10 + Math.random() * 5; // Uma vez a cada 15 rodadas
-    if (random < 0.142) return 2 + Math.random() * 2; // Duas vezes a cada 7 rodadas
-    return 1.1 + Math.random(); // Explosões baixas
+// Função para atualizar as estatísticas
+function updateStats() {
+    let statRow = document.createElement('tr');
+    statRow.innerHTML = `
+        <td>${stats.length + 1}</td>
+        <td>${currentMultiplier.toFixed(2)}x</td>
+        <td>${isCrashed ? 'Perdeu' : 'Ganhou'}</td>
+    `;
+    statsTable.appendChild(statRow);
 }
 
-function startGame() {
-    if (betPlaced) return alert("Jogo já em andamento!");
-    const betInput = document.getElementById("betAmount");
-    betAmount = parseFloat(betInput.value);
-    if (isNaN(betAmount) || betAmount <= 0 || betAmount > balance) {
-        return alert("Insira uma aposta válida!");
+// Função para iniciar o voo
+function startFlight() {
+    if (balance < betAmount) {
+        alert("Saldo insuficiente para apostar!");
+        return;
     }
+
     betPlaced = true;
+    isFlying = true;
+    isCrashed = false;
+    currentMultiplier = 1;
+
+    // Atualiza o saldo após a aposta
     balance -= betAmount;
-    explosionThreshold = generateExplosionThreshold();
     updateBalance();
 
-    flightSound.currentTime = 0;
-    flightSound.play();
+    // Inicia a animação do avião
+    airplane.style.left = '0%';
+    airplane.style.transition = 'none';
 
-    currentMultiplier = 1;
-    const interval = setInterval(() => {
-        if (currentMultiplier >= explosionThreshold) {
-            clearInterval(interval);
-            explode();
-        } else {
-            currentMultiplier += 0.05;
-            multiplierDisplay.textContent = `${currentMultiplier.toFixed(2)}x`;
-            airplane.style.left = `${currentMultiplier * 50}px`;
+    // Reseta o multiplicador
+    multiplierDisplay.innerText = `${currentMultiplier.toFixed(2)}x`;
+
+    // Som de iniciar o voo
+    winSound.play();
+
+    // Calcula o multiplicador e anima o avião
+    let flightInterval = setInterval(() => {
+        if (isCrashed || currentMultiplier > 10) {
+            clearInterval(flightInterval);
+            return;
+        }
+
+        // Aumento do multiplicador
+        currentMultiplier += Math.random() * 0.1;
+
+        // Movimentação do avião
+        airplane.style.left = `${currentMultiplier * 5}%`;
+
+        multiplierDisplay.innerText = `${currentMultiplier.toFixed(2)}x`;
+
+        if (currentMultiplier >= 10 && Math.random() < 0.07) {
+            // Forçar uma explosão do avião com 7% de chance
+            crash();
+            clearInterval(flightInterval);
         }
     }, 100);
 }
 
-function withdrawBet() {
-    if (!betPlaced) return alert("Nenhuma aposta ativa!");
+// Função para lidar com a retirada
+function cashOut() {
+    if (betPlaced && !isCrashed) {
+        balance += betAmount * currentMultiplier;
+        updateBalance();
+        winSound.play();
+        alert(`Você retirou com sucesso! Multiplicador: ${currentMultiplier.toFixed(2)}x`);
+    } else {
+        crash();
+    }
+
+    // Registra a estatística da rodada
+    isCrashed ? alert('Você perdeu a aposta!') : alert(`Você ganhou R$${(betAmount * currentMultiplier).toFixed(2)}`);
+    stats.push({ multiplier: currentMultiplier, isCrashed: isCrashed });
+    updateStats();
+
+    // Resetando variáveis
     betPlaced = false;
-    const winnings = betAmount * currentMultiplier;
-    balance += winnings;
-
-    flightSound.pause();
-    winSound.play();
-
-    betHistory.innerHTML += `<li>Retirou em ${currentMultiplier.toFixed(2)}x e ganhou R$${winnings.toFixed(2)}</li>`;
-    updateBalance();
+    isFlying = false;
+    currentMultiplier = 1;
+    multiplierDisplay.innerText = '1.00x';
+    airplane.style.transition = 'left 0s';
 }
 
-function explode() {
-    flightSound.pause();
-    explosionSound.play();
-    multiplierDisplay.textContent = "Explodiu!";
-    betPlaced = false;
-    betHistory.innerHTML += `<li>Explodiu em ${currentMultiplier.toFixed(2)}x - Perdeu R$${betAmount.toFixed(2)}</li>`;
-    updateBalance();
+// Função para fazer o avião explodir
+function crash() {
+    if (!isFlying) return;
+
+    isFlying = false;
+    isCrashed = true;
+    airplane.style.transition = 'left 2s ease-out';
+    airplane.style.left = '100%'; // Avião explodindo ao ir para a direita
+    crashSound.play();
+
+    alert('O avião explodiu! Você perdeu a aposta.');
+    stats.push({ multiplier: currentMultiplier, isCrashed: true });
+    updateStats();
+    multiplierDisplay.innerText = `${currentMultiplier.toFixed(2)}x`;
 }
 
-// Eventos
-document.getElementById("betButton").addEventListener("click", startGame);
-document.getElementById("withdrawButton").addEventListener("click", withdrawBet);
+// Função para resetar o saldo
+function resetBalance() {
+    balance = 100;
+    updateBalance();
+    stats = [];
+    statsTable.innerHTML = ''; // Limpa as estatísticas
+    alert('Saldo reiniciado para R$100,00!');
+}
+
+// Event Listeners
+betButton.addEventListener('click', () => {
+    if (betPlaced) {
+        alert('Você já fez uma aposta!');
+    } else {
+        startFlight();
+    }
+});
+
+cashOutButton.addEventListener('click', () => {
+    if (!betPlaced) {
+        alert('Você ainda não fez uma aposta!');
+    } else {
+        cashOut();
+    }
+});
+
+resetBalanceButton.addEventListener('click', resetBalance);
+
+// Funções de UI (Animações, efeitos)
+document.body.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth) * 100;
+    const y = (e.clientY / window.innerHeight) * 100;
+    airplane.style.transform = `translate(-50%, -50%) rotate(${x * 0.2}deg) translate(${x - 50}%, ${y - 50}%)`;
+});
+
+updateBalance();
