@@ -1,5 +1,10 @@
 {
-    "nome": "Aviator",
-    "multiplicador": 2.5,
-    "rodadas": 100
+    "saldo": 100.00,
+    "historicoApostas": [
+        {
+            "aposta": 10.00,
+            "multiplicador": 2.50,
+            "resultado": "ganho"
+        }
+    ]
 }
