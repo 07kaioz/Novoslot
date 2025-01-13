@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aviator Game</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Aviator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="game-container">
-    <header>
-      <h1>Aviator Game</h1>
-      <p>Faça sua aposta antes do avião decolar!</p>
-    </header>
-    
-    <div class="game-board">
-      <div class="airplane">
-        <img src="aviator-plane.png" alt="Avião" id="airplane">
-      </div>
 
-      <div class="game-info">
-        <div class="multiplier">
-          <span>Multiplicador: </span><span id="multiplier">1x</span>
-        </div>
-        
-        <input type="number" id="betAmount" placeholder="R$ 1,00" min="1">
-        <button id="betButton" onclick="placeBet()">Apostar</button>
-        
-        <div class="total-bet">
-          <span>Total Apostado: </span><span id="totalBet">R$ 0,00</span>
-        </div>
-        
-        <button id="resetButton" onclick="resetGame()">Reiniciar Jogo</button>
-      </div>
+<div class="container">
+    <div class="header">
+        <h1>Jogo Aviator</h1>
+        <p>Aposte e ganhe com o multiplicador do avião!</p>
     </div>
     
+    <div class="game-area">
+        <div class="sky"></div>
+        <div id="airplane" class="airplane"></div>
+        
+        <div class="info">
+            <p>Aposta: <span id="totalBet">R$ 0,00</span></p>
+            <p>Multiplicador: <span id="multiplier">1x</span></p>
+        </div>
+    </div>
+
+    <div class="controls">
+        <input type="number" id="betAmount" class="input-bet" placeholder="Valor da aposta">
+        <button id="betButton" class="btn">Apostar</button>
+        <button id="withdrawButton" class="btn">Retirar</button>
+        <button id="resetButton" class="btn-reset">Resetar</button>
+    </div>
+
     <div class="history">
-      <h3>Histórico de Apostas</h3>
-      <ul id="betHistory"></ul>
+        <h3>Histórico de Apostas</h3>
+        <ul id="betHistory"></ul>
     </div>
-    
-    <footer>
-      <p>&copy; 2025 Aviator Game. Todos os direitos reservados.</p>
-    </footer>
-  </div>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
