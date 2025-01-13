@@ -1,15 +1,10 @@
-/* Resetando margens e padding */
-* {
+/* Estilo do corpo */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #1a1a1a, #121212);
+    color: #fff;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: #fff;
-    padding: 20px;
 }
 
 /* Container principal */
@@ -17,236 +12,90 @@ body {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-    background-color: #2e2e2e;
     padding: 20px;
+    background: #2b2b2b;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
+/* Cabeçalho */
 .header h1 {
-    font-size: 3rem;
-    color: #6200ea;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    animation: bounce 2s infinite;
+    font-size: 2.5rem;
+    color: #ff6600;
 }
 
 .header p {
-    font-size: 1.4rem;
-    color: #ccc;
-    animation: fadeIn 3s ease-in-out;
+    margin: 5px 0 20px;
 }
 
-/* Exibição de Saldo */
+/* Saldo */
 #balance {
-    font-size: 1.6rem;
-    color: #ff5722;
+    font-size: 1.5rem;
+    margin: 15px 0;
     font-weight: bold;
+    color: #32cd32;
 }
 
-/* Animação de movimento da tela */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Estilo da área do jogo */
+/* Área do jogo */
 .game-area {
-    position: relative;
-    margin-top: 40px;
-    height: 350px;
-    background-color: #1e1e1e;
+    margin: 20px auto;
+    height: 300px;
+    background: linear-gradient(180deg, #2e2e2e, #3a3a3a);
     border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-.sky {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://www.transparenttextures.com/patterns/diagonal-hatch.png');
-    opacity: 0.4;
-    animation: skyMove 20s linear infinite;
-}
-
-/* Animação de movimento do céu */
-@keyframes skyMove {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 100% 100%;
-    }
-}
-
-/* Controles de Aposta */
-.controls {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.input-bet {
-    width: 160px;
-    padding: 12px;
-    font-size: 1.3rem;
-    margin-right: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 15px;
-}
-
-.btn {
-    padding: 12px 30px;
-    font-size: 1.3rem;
-    background-color: #6200ea;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #4b00d1;
-}
-
-/* Animação do avião */
-@keyframes airplaneMove {
-    0% {
-        transform: translateX(-100vw) rotate(45deg);
-    }
-    50% {
-        transform: translateX(50vw) rotate(180deg);
-    }
-    100% {
-        transform: translateX(100vw) rotate(360deg);
-    }
-}
-
-@keyframes airplaneExplosion {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(2) rotate(720deg);
-        opacity: 0;
-    }
-}
-
+/* Avião */
 .airplane {
-    width: 90px;
-    height: 90px;
-    background-color: #ff5722;
+    width: 50px;
+    height: 50px;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/e/ed/Airplane_silhouette.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
     position: absolute;
     top: 50%;
-    left: -90px;
-    border-radius: 15%;
-    transform-origin: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    animation: airplaneMove 6s linear infinite;
+    left: 0;
+    transform: translateY(-50%);
 }
 
-.airplane.explode {
-    animation: airplaneExplosion 1s forwards;
-}
-
-/* Exibição de Informações */
-.info {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 1.4rem;
-    color: white;
+/* Multiplicador */
+#multiplier {
+    font-size: 2rem;
+    color: #ffd700;
     font-weight: bold;
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
-.info span {
-    color: #ff5722;
-}
-
-/* Estilo do histórico de apostas */
-.history {
-    margin-top: 30px;
-    background-color: #2f2f2f;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.history h3 {
-    font-size: 1.8rem;
-    color: #6200ea;
-    margin-bottom: 10px;
-}
-
-#betHistory {
-    list-style: none;
-    font-size: 1.2rem;
-    text-align: left;
-    max-height: 250px;
-    overflow-y: auto;
-    padding-left: 0;
-}
-
-#betHistory li {
-    background-color: #e1e1e1;
-    padding: 12px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-/* Botão de Resetar */
-.btn-reset {
-    padding: 12px 25px;
-    background-color: #ff5722;
+/* Botões */
+.controls .btn {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1rem;
     color: #fff;
-    font-size: 1.3rem;
     border: none;
     border-radius: 5px;
+    background: #007bff;
+    transition: all 0.3s;
+}
+
+.controls .btn:hover {
+    background: #0056b3;
+}
+
+/* Histórico */
+.history {
+    text-align: left;
     margin-top: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 10px;
+    background: #2e2e2e;
+    border-radius: 10px;
+    color: #fff;
 }
 
-.btn-reset:hover {
-    background-color: #e64a19;
-}
-
-/* Efeitos de hover para os botões */
-#betButton:hover, #withdrawButton:hover, #resetButton:hover {
-    transform: scale(1.05);
-    background-color: #4b00d1;
-}
-
-/* Efeitos de animação suave */
-.airplane {
-    animation: airplaneMove 6s linear infinite;
+/* Rodapé */
+footer {
+    margin-top: 20px;
+    color: #888;
 }
