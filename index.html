@@ -1,205 +1,50 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXREWBXDPK"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-    
-          gtag('config', 'G-BXREWBXDPK');
-        </script>
-    
-        <meta name="google-site-verification" content="dxmIl3EpISDu5BOegNMWFihAmxsXLv1Q2nzzTHQeL1c" />
-        <title>Jogo do Tigre Site Oficial - Link do Joguinho do tigre | Jogue na Melhor Plataforma de Apostas Online</title>
-        <meta name="description" content="Site Oficial do Jogo do Tigre e do Fortune Tiger para jogar e baixar o aplicativo na melhor plataforma de apostas online. Experimente o joguinho oficial diversão total agora mesmo!">
-        <meta name="author" content="PGGAMES - Jogo do Tigre">
-        <meta name="robots" content="index, follow"> 
-        <link rel="canonical" href="https://jogodotigre-pg.com/" />
-    
-        <!-- Open Graph meta tags -->
-        <meta property="og:title" content="Jogo do Tigre Site Oficial - Link do Joguinho do tigre | Jogue na Melhor Plataforma de Apostas Online">
-        <meta property="og:description" content="Site Oficial do Jogo do Tigre e do Fortune Tiger para jogar e baixar o aplicativo na melhor plataforma de apostas online. Experimente o joguinho oficial diversão total agora mesmo!">
-        <meta property="og:image" content="https://jogodotigre-pg.com/css/jogo%20do%20tigre%20favicon.jpg"> 
-        <meta property="og:url" content="https://jogodotigre-pg.com/">
-        <meta property="og:type" content="website">
-    
-        <!-- Twitter Card meta tags -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Jogo do Tigre Site Oficial - Link do Joguinho do tigre | Jogue na Melhor Plataforma de Apostas Online">
-        <meta name="twitter:description" content="Site Oficial do Jogo do Tigre e do Fortune Tiger para jogar e baixar o aplicativo na melhor plataforma de apostas online. Experimente o joguinho oficial diversão total agora mesmo!">
-        <meta name="twitter:image" content="https://jogodotigre-pg.com/css/jogo%20do%20tigre%20favicon.jpg"> 
-    
-        <!-- Favicon -->
-        <link rel="icon" type="image/jpeg" href="css/jogo do tigre favicon.jpg">
-        
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
-    
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fortune Tiger</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-
-
-<nav class="menu">
-        <li><a href="#aplicativo-do-joguinho-do-tigre">Link do Jogo do Tigre (APK)</a></li>
-        <li><a href="#telegram-oficial-do-jogo-do-tigre">Telegram do Jogo do Tigre</a></li>
-        <li><a href="#historia-do-jogo-do-tigre-brasil">História do Jogo</a></li>
-        <li><a href="#como-jogar">Como Jogar</a></li>
-        <li><a href="#dicas-e-estrategias">Dicas e Estratégias</a></li>
-        <li><a href="#melhores-horarios">Melhores Horários</a></li>
-        <li><a href="#sobre-aplicativo-do-jogo">Sobre o Aplicativo</a></li>
-        <li><a href="#onde-mais-jogar">Onde Jogar?</a></li>
-        <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-        
-    </ul>
-</nav>
+  <div class="game-container">
+    <h1>Fortune Tiger</h1>
     
-<div class="black-section" id="jogo-do-tigre"> 
-        <h1>Jogo do Tigre</h1>
-        <p>Explore o Jogo do Tigre Oficial e descubra uma maneira emocionante de apostar online. Nosso aplicativo exclusivo facilita jogar o Jogo do Tigre e ganhar dinheiro diretamente na palma da sua mão. Aprenda como jogar o jogo do tigre, descubra como ganhar, e experimente a emoção das apostas. Aproveite ao máximo seu tempo de jogo e descubra qual o melhor horário para jogar o jogo do tigre, tudo isso com a confiança do Jogo do Tigre Oficial.</p>
+    <div class="game-info">
+      <div class="info-item">
+        <p>Saldo: R$ <span id="balance">10000</span></p>
+      </div>
+      <div class="info-item">
+        <button id="decreaseBet">-</button>
+        <span>Aposta: R$ <span id="betAmount">0.40</span></span>
+        <button id="increaseBet">+</button>
+      </div>
+      <div class="info-item">
+        <p>Ganhos: R$ <span id="earnings">0.00</span></p>
+      </div>
     </div>
 
-
-    <div class="demo-box">
-        <h2>Jogo do Tigre Demo</h2>
-        <p class="alerta">Este jogo é apenas para maiores de 18 anos</p>
-        <div id="game-thumbnail" style="background-image: url('joguinho_do_tigre.jpg');">
-            <button onclick="loadGame()">Jogar Agora!</button>
-        </div>
-        <iframe id="game-iframe" class="demo-iframe" style="display:none;" frameborder="0"></iframe>
-        <h3 class="aspectos-do-jogo">Especificações do Jogo</h3>
-        <div class="grid-container">
-            <div class="jogo-do-tigre-info">RTP</div>
-            <div class="jogo-do-tigre-info">96,81%</div>
-            <div class="jogo-do-tigre-info">Volatilidade</div>
-            <div class="jogo-do-tigre-info">Média</div>
-            <div class="jogo-do-tigre-info">Ganho Máximo</div>
-            <div class="jogo-do-tigre-info">2500x</div>
-            <div class="jogo-do-tigre-info">Tema</div>
-            <div class="jogo-do-tigre-info">Ásia</div>
-            <div class="jogo-do-tigre-info">Data de Lançamento</div>
-            <div class="jogo-do-tigre-info">15 de abril de 2022</div>
-        </div>
-        
+    <div class="slot-machine">
+      <div class="row">
+        <div class="slot">🐯</div>
+        <div class="slot">🍊</div>
+        <div class="slot">🏮</div>
+      </div>
+      <div class="row">
+        <div class="slot">🧧</div>
+        <div class="slot">🐯</div>
+        <div class="slot">🏆</div>
+      </div>
+      <div class="row">
+        <div class="slot">🏮</div>
+        <div class="slot">🐯</div>
+        <div class="slot">🍊</div>
+      </div>
     </div>
 
+    <button id="spinButton">Girar</button>
+  </div>
 
-
-    <div class="double-box-container">
-      
-        <div class="telegram-box">
-            <div class="telegram-content">
-                <div class="telegram-icon">
-                    <img src="Telegram oficial do jogo do tigre.jpg" alt="Telegram Icon" id="telegram-oficial-do-jogo-do-tigre"> 
-                </div>
-                <h3>Horários do Jogo do Tigre</h3>
-                <h4>Melhor horário para jogar o Jogo do Tigre</h4>
-                <p>Junte-se à nossa Sala Oficial no Telegram e descubra o melhor horário para jogar o Jogo do Tigre. Participe de discussões estratégicas e otimize sua experiência de jogo!</p>
-                <a href="https://t.me/jogodotigre_oficial" class="join-button" target="_blank">Entrar na Sala do Telegram</a>
-
-            </div>
-        </div>
-    
-      
-        <div class="text-box">
-            <h2>Sala Oficial do Jogo do Tigre</h2>
-            <p>Junte-se ao nosso grupo oficial no Telegram e descubra dicas, discuta estratégias e encontre o melhor horário para jogar o Jogo do Tigre junto a milhares de jogadores brasileiros. Faça parte desta comunidade de apostadores e compartilhe suas experiências de jogo!</p>
-            <h3>Regras Básicas e Diretrizes</h3>
-    <p>Para manter um ambiente positivo na Sala Oficial do Jogo do Tigre, trate todos com respeito, evite spam e compartilhe apenas conteúdo apropriado. Respeite a privacidade dos membros e mantenha a comunicação útil e respeitosa.</p>
-</div>
-        </div>
-    </div>
-    
-    <div class="second-box">
-        <div class="box-content">
-            <div class="left-content" id="aplicativo-do-joguinho-do-tigre">
-                <p>Link para o Jogo do Tigre disponível para Android e iOS.</p>
-                <p class="nota">Aplicativo Atualizado: Julho de 2024</p>
-            </div>
-            <div class="right-content">
-                <a href="#" class="download-button">Baixar Agora!</a>
-            </div>
-        </div>
-    </div>
-    
-    <div class="Jogo-do-tigre-info">
-        <div class="contente-do-joguinho">
-            <h2 id="historia-do-jogo-do-tigre-brasil">A História do Jogo do Tigre no Brasil</h2>
-            <p>
-                A chegada do <a href="https://pt.wikipedia.org/wiki/Jogo_do_Tigrinho" target="_blank">Jogo do Tigre</a> ao Brasil marcou um avanço significativo no cenário do entretenimento digital. Este jogo inovador combina elementos culturais asiáticos com tecnologia de ponta, oferecendo aos jogadores brasileiros uma experiência única e envolvente. Desenvolvido para ser acessível em celulares, tablets e computadores, o Jogo do Tigre não apenas entretém, mas também conecta uma comunidade de jogadores de jogos online em todo o país. Com gráficos impressionantes e mecânicas de jogo envolventes, este título se destaca como uma escolha popular entre os jogadores que buscam diversão e emoção em cada sessão de jogo.
-            </p>            
-            <h3>As Mecânicas do Jogo do Tigre</h3>
-            <p>Lançado em abril de 2022, o Jogo do Tigre combina mecânicas inovadoras com uma estética cultural asiática, proporcionando uma experiência envolvente para jogadores brasileiros. Com um RTP de 96,81% e volatilidade média, os jogadores têm a chance de alcançar até 2500x o valor da aposta máxima. Ambientado no tema da Ásia, o jogo é desenvolvido com linguagens de programação modernas como C++, C# e JavaScript, garantindo uma experiência de jogo fluida e visualmente impressionante em celulares, tablets e computadores.</p>
-            <h3>Popularidade e Recepção do Jogo do Tigre no Brasil</h3>
-            <p>Desde seu lançamento em abril de 2022, o Jogo do Tigre conquistou rapidamente uma base fiel de jogadores no Brasil. A fusão única de elementos culturais asiáticos com gráficos de alta qualidade e mecânicas de jogo envolventes tem sido amplamente elogiada pela comunidade de jogadores. Através da nossa Sala Oficial do Jogo do Tigre no Telegram, os jogadores brasileiros se conectam diariamente para discutir estratégias, compartilhar experiências e descobrir o melhor horário para jogar. Esta interação ativa tem fortalecido ainda mais a comunidade de jogadores em torno do Jogo do Tigre, tornando-o não apenas um jogo popular, mas também uma plataforma de socialização e entretenimento para entusiastas de jogos online no Brasil.</p>
-            <h3>Engajamento da Comunidade</h3>
-            <p>O Jogo do Tigre não é apenas um jogo, mas também uma plataforma que fomenta a interação e a camaradagem entre os jogadores brasileiros. Através de iniciativas como nossa Sala Oficial do Jogo do Tigre no Telegram, construímos um espaço onde os jogadores podem não apenas discutir estratégias e compartilhar dicas, mas também criar laços de amizade e colaboração. A comunidade ativa e engajada contribui significativamente para a atmosfera positiva e acolhedora em torno do jogo, incentivando a participação contínua e o crescimento da base de jogadores. Este engajamento não só fortalece a lealdade dos jogadores, mas também enriquece a experiência geral de jogo, tornando o Jogo do Tigre uma escolha preferida entre os entusiastas de jogos online no Brasil.</p>
-            <h2 id="como-jogar">Como Jogar o Joguinho do Tigre</h2>
-            <p>O Jogo do Tigre é uma experiência envolvente que combina elementos tradicionais de caça-níqueis com uma temática asiática vibrante. Os jogadores iniciam selecionando suas apostas e ajustando as linhas de pagamento conforme desejado. O objetivo é obter combinações vencedoras de símbolos ao longo das linhas de pagamento ativas para garantir prêmios. Características especiais, como rodadas grátis e multiplicadores, podem ser acionadas através de combinações específicas de símbolos, aumentando as chances de ganhar prêmios maiores. A mecânica simples, mas cativante, torna o Jogo do Tigre acessível para jogadores de todos os níveis de experiência, enquanto a temática e os gráficos envolventes garantem uma experiência de jogo emocionante e imersiva.</p>
-            <h3>Detalhando as Mecânicas do Jogo do Tigre</h3>
-            <p>No Jogo do Tigre, os jogadores encontram uma mecânica de jogo intuitiva e dinâmica. Cada giro das bobinas apresenta uma oportunidade emocionante de alinhar símbolos específicos ao longo das linhas de pagamento para ganhar prêmios. Os símbolos Wild podem substituir outros símbolos para formar combinações vencedoras, enquanto os Scatter podem acionar rodadas grátis ou outros bônus especiais. Ajustar as configurações de aposta é simples, permitindo que os jogadores personalizem sua experiência de jogo de acordo com sua estratégia e orçamento. Com uma taxa de retorno ao jogador (RTP) competitiva e uma volatilidade média, o Jogo do Tigre oferece uma experiência equilibrada e emocionante para entusiastas de jogos de cassino e apostadores iniciantes.</p>
-            <h2 id="dicas-e-estrategias">Dicas e Estratégias</h2>
-            <p>Para maximizar suas chances de sucesso, considerar algumas estratégias pode ser vantajoso. Primeiramente, gerenciar sua banca de forma eficaz é fundamental. Estabeleça um orçamento claro e mantenha-se dentro dos limites enquanto joga. Além disso, conhecer as características especiais do jogo, como os símbolos Wild e Scatter, pode ajudar a identificar oportunidades de ganho. Experimente ajustar suas apostas de acordo com as condições do jogo, aumentando ou diminuindo conforme necessário para aproveitar os momentos mais propícios. Utilizar rodadas grátis e outros bônus disponíveis também pode aumentar suas chances de ganhar prêmios maiores. Por fim, manter-se informado sobre as atualizações do jogo e participar da comunidade de jogadores pode proporcionar dicas valiosas e estratégias adicionais para aprimorar sua experiência de jogo no Jogo do Tigre.</p>
-            <h3>Treinando no Modo Demo</h3>
-            <p>Antes de começar a apostar com dinheiro real, é altamente recomendável explorar o modo demo do Jogo do Tigre. Esta versão gratuita permite que você familiarize-se com as mecânicas do jogo, experimente diferentes estratégias e compreenda melhor as dinâmicas de apostas. Utilize este ambiente sem riscos para ajustar suas preferências de jogo e descobrir qual abordagem funciona melhor para você. Treinar no modo demo pode não apenas melhorar suas habilidades, mas também aumentar sua confiança ao jogar com dinheiro real. Aproveite esta oportunidade para aprender e aperfeiçoar suas técnicas antes de entrar no jogo com apostas reais.</p>
-            <h2 id="melhores-horarios">Qual o Melhor Horário para Jogar o Jogo do Tigre?</h2>
-            <p>Descobrir o melhor horário para jogar o Jogo do Tigre pode influenciar sua experiência de apostas. Com base na experiência da comunidade de jogadores, períodos como tarde da noite (por volta das 23h), início da manhã (6h) e fins de semana podem oferecer uma experiência mais relaxada e menos concorrida. Para mais dicas e discussões, junte-se à nossa comunidade oficial no Telegram:<a href="https://t.me/jogodotigre_oficial" target="_blank">Jogo do Tigre Comunidade Oficial Telegram.</a></p>
-            <h3>Praticando os Horários no Modo Demo</h3>
-            <p>Experimentar diferentes horários no modo demo do Jogo do Tigre pode ser uma estratégia inteligente para entender melhor suas dinâmicas e variações ao longo do dia. Aproveite essa oportunidade para ajustar sua abordagem de jogo e descobrir qual horário se alinha melhor com suas preferências e estratégias. É uma maneira eficaz de se preparar para apostas reais e maximizar suas chances de sucesso quando decidir jogar com dinheiro real.</p>
-            <h2 id="sobre-aplicativo-do-jogo">Aplicativo do Jogo do Tigre Disponível para Celulares, Tablets e Computadores</h2>
-            <p>O aplicativo oficial do Jogo do Tigre oferece uma experiência de jogo emocionante disponível para celulares, tablets e computadores. Compatível com Android e iOS, agora é mais fácil do que nunca desfrutar do jogo onde quer que você esteja. Experimente a conveniência de jogar diretamente na palma da sua mão ou em seu dispositivo favorito, aproveitando ao máximo cada momento de diversão e chances de ganhar.</p>
-            <h2 id="onde-mais-jogar">Onde Mais Posso Jogar o Jogo do Tigre?</h2>
-            <p>O Jogo do Tigre está disponível em várias plataformas de renome, incluindo Jogo do Tigre 777, Jogo do Tigre Bet365, Jogo do Tigre Betnacional, Jogo do Tigre Pixbet, Jogo do Tigre Sportingbet, Jogo do Tigre Novibet, Jogo do Tigre Betfair, Jogo do Tigre Bet7K, Jogo do Tigre Superbet, Jogo do Tigre Parimatch, Jogo do Tigre EstrelaBet, Jogo do Tigre F12 Bet, Jogo do Tigre 1Win, Jogo do Tigre Betway, Jogo do Tigre Stake, Jogo do Tigre 1xBet, Jogo do Tigre BC Game, Jogo do Tigre Sportsbet IO, Jogo do Tigre Dafabet, e Jogo do Tigre Bwin. Essas plataformas oferecem uma variedade de opções para os jogadores desfrutarem da experiência do Jogo do Tigre em seus dispositivos móveis, tablets e computadores. Explore essas plataformas para encontrar a que melhor atende às suas preferências de jogo.</p>
-            <div class="perguntas-frequentes">
-                <h2 id="perguntas-frequentes">Perguntas Frequentes sobre o Jogo do Tigre</h2>
-            
-                <h3>O que é o Jogo do Tigre?</h3>
-                <p>O Jogo do Tigre é um jogo de cassino online inspirado na cultura asiática, conhecido por suas mecânicas envolventes e gráficos impressionantes. Disponível para jogar em celulares, tablets e computadores, oferece uma experiência emocionante para os jogadores brasileiros.</p>
-            
-                <h3>Como posso jogar o Jogo do Tigre?</h3>
-                <p>Para jogar o Jogo do Tigre, basta acessar nossa plataforma oficial em <a href="#jogo-do-tigre">Jogo do Tigre</a>, selecionar sua aposta, ajustar as linhas de pagamento conforme desejado e girar as bobinas para começar a jogar.</p>
-            
-                <h3>Quais são as características especiais do Jogo do Tigre?</h3>
-                <p>O Jogo do Tigre apresenta características como símbolos Wild, que substituem outros símbolos para formar combinações vencedoras, e símbolos Scatter, que podem acionar rodadas grátis e multiplicadores. Essas características aumentam as chances de ganhar prêmios maiores durante o jogo.</p>
-            
-                <h3>O Jogo do Tigre é seguro?</h3>
-                <p>Sim, todas as transações financeiras são seguras e protegidas. Utilizamos tecnologia avançada para garantir a segurança dos dados dos jogadores.</p>
-            
-                <h3>Posso jogar o Jogo do Tigre gratuitamente?</h3>
-                <p>Sim, você pode experimentar o Jogo do Tigre gratuitamente no modo demo disponível em nossa plataforma. Isso permite que você se familiarize com as mecânicas do jogo sem apostar dinheiro real.</p>
-            
-                <h3>Como posso entrar em contato com o suporte do Jogo do Tigre?</h3>
-                <p>Para suporte, você pode enviar um e-mail para <a href="mailto:suporte@jogodotigre-pg.com?subject=Suporte%20Jogo%20do%20Tigre">suporte@jogodotigre-pg.com</a>. Devido ao alto número de consultas, nosso tempo de resposta pode ser de até 24 horas. Por favor, especifique o assunto do e-mail para facilitar o atendimento.</p>
-            
-                <h3>O Jogo do Tigre está disponível para dispositivos móveis?</h3>
-                <p>Sim, o Jogo do Tigre é compatível com dispositivos móveis, incluindo smartphones e tablets, tanto para Android quanto iOS. Você pode jogar onde quer que esteja, aproveitando a conveniência de jogar em movimento.</p>
-            </div>
-            
-        </div>
-    </div>
-    
-    <footer>
-        <div class="footer-content">
-            <nav>
-                <a href="#">Termos e Condições</a>
-                <a href="#">Política de Privacidade</a>
-                <a href="#">Sobre Nós</a>
-                <a href="#">Contato</a>
-            </nav>
-            <p class="copyright">&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
-        </div>
-
-        <div class="tags-section">
-            <h2 class="tags-title">Tags Relacionadas</h2>
-            <p class="tags-relacionadas">
-                jogo do tigre, fortune tiger, tigre jogo, tiger fortune, jogo tigre, jogo de tigre, joguinho do tigre, jogo fortune tiger, fortune tiger demo, fortune tiger online, tigre fortune, fortune tigre, jogo fortune, jogar fortune tiger, tiger jogo, jogo do tigre fortune tiger, jogo do tigre online, jogo tiger fortune, fortunetiger, jogo do fortune tiger, fortuna tiger, jogos fortune tiger, jogo do tiger, jogo do trigre, fortuna tigre, jogo.do.tigre, o jogo do tigre, jogo do tigre oficial, jogar jogo do tigre, jogo di tigre, jogo do.tigre, cassino tigre, cassino fortune tiger, fortune tiger jogar, jogo tiger, onde jogar fortune tiger, tigre cassino, jogo do trige, furtune tiger, casino jogo do tigre, fortune tiger onde jogar, tigre jogo online, jogo do tiger fortune, jogo do togre, jogo do tigee, cassino online tigre, casino fortune tiger, jogo dontigre, fortune tiger como jogar, jogar tigre
-            </p>
-        </div>
-
-    </footer>
-    <script src="js/jogo-do-tigre.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
