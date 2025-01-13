@@ -53,43 +53,111 @@ function startFlight() {
     updateBalance();
 
     // Inicia a animação do avião
-    airplane.style.animation = 'airplaneFly 10s linear infinite';
+    airplane.style.left = '0%';
+    airplane.style.transition = 'none';
 
-    // Iniciar o aumento do multiplicador
-    const multiplierInterval = setInterval(() => {
-        if (!isFlying || isCrashed) {
-            clearInterval(multiplierInterval);
+    // Reseta o multiplicador
+    multiplierDisplay.innerText = `${currentMultiplier.toFixed(2)}x`;
+
+    // Som de iniciar o voo
+    winSound.play();
+
+    // Calcula o multiplicador e anima o avião
+    let flightInterval = setInterval(() => {
+        if (isCrashed || currentMultiplier > 10) {
+            clearInterval(flightInterval);
             return;
         }
 
-        currentMultiplier += 0.1;
-        multiplierDisplay.textContent = `${currentMultiplier.toFixed(2)}x`;
+        // Aumento do multiplicador
+        currentMultiplier += Math.random() * 0.1;
 
-        if (Math.random() < 0.05) {
+        // Movimentação do avião
+        airplane.style.left = `${currentMultiplier * 5}%`;
+
+        multiplierDisplay.innerText = `${currentMultiplier.toFixed(2)}x`;
+
+        if (currentMultiplier >= 10 && Math.random() < 0.07) {
+            // Forçar uma explosão do avião com 7% de chance
             crash();
+            clearInterval(flightInterval);
         }
-    }, 200);
+    }, 100);
 }
 
-// Função de crash
-function crash() {
-    isFlying = false;
-    isCrashed = true;
-    crashSound.play();
-    airplane.style.animation = '';  // Para a animação do avião
-    alert(`O avião explodiu! Multiplicador: ${currentMultiplier.toFixed(2)}x`);
-    updateStats();
-}
-
-// Função de retirada
+// Função para lidar com a retirada
 function cashOut() {
-    if (!betPlaced) {
-        return;
+    if (betPlaced && !isCrashed) {
+        balance += betAmount * currentMultiplier;
+        updateBalance();
+        winSound.play();
+        alert(`Você retirou com sucesso! Multiplicador: ${currentMultiplier.toFixed(2)}x`);
+    } else {
+        crash();
     }
 
-    isFlying = false;
+    // Registra a estatística da rodada
+    isCrashed ? alert('Você perdeu a aposta!') : alert(`Você ganhou R$${(betAmount * currentMultiplier).toFixed(2)}`);
+    stats.push({ multiplier: currentMultiplier, isCrashed: isCrashed });
+    updateStats();
+
+    // Resetando variáveis
     betPlaced = false;
-    winSound.play();
-    balance += betAmount * currentMultiplier;
+    isFlying = false;
+    currentMultiplier = 1;
+    multiplierDisplay.innerText = '1.00x';
+    airplane.style.transition = 'left 0s';
+}
+
+// Função para fazer o avião explodir
+function crash() {
+    if (!isFlying) return;
+
+    isFlying = false;
+    isCrashed = true;
+    airplane.style.transition = 'left 2s ease-out';
+    airplane.style.left = '100%'; // Avião explodindo ao ir para a direita
+    crashSound.play();
+
+    alert('O avião explodiu! Você perdeu a aposta.');
+    stats.push({ multiplier: currentMultiplier, isCrashed: true });
+    updateStats();
+    multiplierDisplay.innerText = `${currentMultiplier.toFixed(2)}x`;
+}
+
+// Função para resetar o saldo
+function resetBalance() {
+    balance = 100;
     updateBalance();
-    alert(`Você retirou com sucesso! Multiplicador:
+    stats = [];
+    statsTable.innerHTML = ''; // Limpa as estatísticas
+    alert('Saldo reiniciado para R$100,00!');
+}
+
+// Event Listeners
+betButton.addEventListener('click', () => {
+    if (betPlaced) {
+        alert('Você já fez uma aposta!');
+    } else {
+        startFlight();
+    }
+});
+
+cashOutButton.addEventListener('click', () => {
+    if (!betPlaced) {
+        alert('Você ainda não fez uma aposta!');
+    } else {
+        cashOut();
+    }
+});
+
+resetBalanceButton.addEventListener('click', resetBalance);
+
+// Funções de UI (Animações, efeitos)
+document.body.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth) * 100;
+    const y = (e.clientY / window.innerHeight) * 100;
+    airplane.style.transform = `translate(-50%, -50%) rotate(${x * 0.2}deg) translate(${x - 50}%, ${y - 50}%)`;
+});
+
+updateBalance();
