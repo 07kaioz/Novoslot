@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Meu Site no GitHub</title>
+    <title>Jogo Aviador Ultra Realista</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Bem-vindo ao Meu Site!</h1>
-        <p>Este é um site simples criado para o GitHub Pages</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Jogo Aviador</h1>
+            <p>Seja rápido! Aposte antes que o avião exploda!</p>
+        </header>
+        
+        <div class="game-area">
+            <div id="airplane" class="airplane"></div>
+            <div id="multiplier">1.00x</div>
+        </div>
 
-    <section class="content">
-        <h2>Interatividade com JavaScript</h2>
-        <button id="mostrarMensagem">Clique para mostrar mensagem</button>
-        <div id="mensagem" style="display:none;"></div> <!-- A mensagem começa oculta -->
-    </section>
+        <div class="controls">
+            <button id="betButton">Apostar</button>
+            <button id="withdrawButton">Retirar</button>
+            <p id="status">Aperte "Apostar" para começar.</p>
+        </div>
 
-    <footer>
-        <p>© 2025 Meu Site. Todos os direitos reservados.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2025 Todos os direitos reservados.</p>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
