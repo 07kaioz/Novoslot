@@ -207,3 +207,23 @@ footer p:hover {
     color: #ffcc00;
     text-shadow: 0 0 10px #ffcc00;
 }
+/* Botão de reinício do saldo */
+.reset-balance-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-reset-balance {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 25px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-reset-balance:hover {
+    background-color: #0056b3;
+}
