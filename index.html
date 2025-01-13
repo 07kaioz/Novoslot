@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jogo Aviator - Teste sua sorte e habilidades neste emocionante jogo de apostas!">
-    <title>Jogo Aviator</title>
+    <title>Aviator Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,29 +12,26 @@
             <h1 class="title">Aviator Game</h1>
             <p class="subtitle">Teste sua sorte e veja até onde o avião pode ir!</p>
         </header>
-        
-        <!-- Área do jogo -->
-        <section class="game-section">
-            <div class="game-area">
-                <div class="multiplier-display" id="multiplier">1.00x</div>
-                <div class="airplane" id="airplane"></div>
-            </div>
-        </section>
 
-        <!-- Controles -->
-        <section class="controls-section">
-            <div class="controls">
+        <div class="game-section">
+            <div class="game-area">
+                <div id="multiplier" class="multiplier-display">1.00x</div>
+                <div id="airplane" class="airplane"></div>
+            </div>
+
+            <div class="controls-section">
                 <button id="betButton" class="btn">Apostar</button>
                 <button id="cashOutButton" class="btn">Retirar</button>
             </div>
+
             <div class="balance-display" id="balance">Saldo: R$100,00</div>
-            <div class="reset-balance-container">
+
+            <div class="controls-section">
                 <button id="resetBalanceButton" class="btn btn-reset-balance">Reiniciar Saldo</button>
             </div>
-        </section>
+        </div>
 
-        <!-- Instruções do jogo -->
-        <section class="instructions">
+        <div class="instructions">
             <h2>Como jogar</h2>
             <ol>
                 <li>Clique em "Apostar" para iniciar o jogo.</li>
@@ -43,12 +39,11 @@
                 <li>Clique em "Retirar" antes do avião explodir para garantir seus ganhos.</li>
                 <li>Se você não retirar a tempo, perderá sua aposta.</li>
             </ol>
-        </section>
+        </div>
 
-        <!-- Tabela de Estatísticas -->
-        <section class="stats-section">
+        <div class="stats-section">
             <h2>Estatísticas Recentes</h2>
-            <table>
+            <table id="statsTable">
                 <thead>
                     <tr>
                         <th>Rodada</th>
@@ -56,17 +51,18 @@
                         <th>Resultado</th>
                     </tr>
                 </thead>
-                <tbody id="statsTable">
-                    <!-- Linhas serão adicionadas dinamicamente -->
+                <tbody>
+                    <!-- Estatísticas vão aparecer aqui -->
                 </tbody>
             </table>
-        </section>
+        </div>
 
-        <!-- Rodapé -->
         <footer>
             <p>Copyright © 2025. Todos os direitos reservados.</p>
             <p>Desenvolvido para fins educacionais e recreativos.</p>
         </footer>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
