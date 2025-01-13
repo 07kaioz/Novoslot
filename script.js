@@ -1,86 +1,81 @@
+let balance = 100.0;
 let betAmount = 0;
-let currentMultiplier = 1;
+let currentMultiplier = 1.0;
+let explosionThreshold = 0;
 let betPlaced = false;
-let explosionTriggered = false;
-let balance = 100; // Saldo inicial
 
-// Referências aos elementos
+// Sons
+const flightSound = document.getElementById("flightSound");
+const explosionSound = document.getElementById("explosionSound");
+const winSound = document.getElementById("winSound");
+
+// Elementos do DOM
+const multiplierDisplay = document.getElementById("multiplier");
 const airplane = document.getElementById("airplane");
-const betAmountInput = document.getElementById("betAmount");
-const betButton = document.getElementById("betButton");
-const withdrawButton = document.getElementById("withdrawButton");
-const totalBetElement = document.getElementById("totalBet");
-const multiplierElement = document.getElementById("multiplier");
-const balanceElement = document.getElementById("balance");
+const balanceDisplay = document.getElementById("balance");
 const betHistory = document.getElementById("betHistory");
-const resetButton = document.getElementById("resetButton");
 
-// Função para iniciar o jogo
-function placeBet() {
-    betAmount = parseFloat(betAmountInput.value);
-    if (isNaN(betAmount) || betAmount < 1 || betAmount > balance) {
-        alert("Por favor, insira um valor válido e que seja menor ou igual ao saldo disponível!");
-        return;
-    }
-
-    betPlaced = true;
-    currentMultiplier = 1;
-    explosionTriggered = false;
-    balance -= betAmount; // Deduz o valor da aposta do saldo
-    totalBetElement.textContent = `R$ ${betAmount.toFixed(2)}`;
-    multiplierElement.textContent = `${currentMultiplier}x`;
-    balanceElement.textContent = `R$ ${balance.toFixed(2)}`;
-
-    // Iniciar animação do avião
-    airplane.style.left = "-90px";
-    airplane.classList.remove("explode");
-    airplane.style.animation = "airplaneMove 6s linear infinite";
-
-    // Simular multiplicação do valor
-    startMultiplier();
+function updateBalance() {
+    balanceDisplay.textContent = `Saldo: R$${balance.toFixed(2)}`;
 }
 
-// Função para controlar o multiplicador e o movimento do avião
-function startMultiplier() {
-    const interval = setInterval(() => {
-        if (betPlaced && !explosionTriggered) {
-            currentMultiplier += 0.1;
-            multiplierElement.textContent = `${currentMultiplier.toFixed(1)}x`;
-        }
+function generateExplosionThreshold() {
+    const random = Math.random();
+    if (random < 0.066) return 10 + Math.random() * 5; // Uma vez a cada 15 rodadas
+    if (random < 0.142) return 2 + Math.random() * 2; // Duas vezes a cada 7 rodadas
+    return 1.1 + Math.random(); // Explosões baixas
+}
 
-        if (parseFloat(airplane.style.left.replace("px", "")) > window.innerWidth) {
+function startGame() {
+    if (betPlaced) return alert("Jogo já em andamento!");
+    const betInput = document.getElementById("betAmount");
+    betAmount = parseFloat(betInput.value);
+    if (isNaN(betAmount) || betAmount <= 0 || betAmount > balance) {
+        return alert("Insira uma aposta válida!");
+    }
+    betPlaced = true;
+    balance -= betAmount;
+    explosionThreshold = generateExplosionThreshold();
+    updateBalance();
+
+    flightSound.currentTime = 0;
+    flightSound.play();
+
+    currentMultiplier = 1;
+    const interval = setInterval(() => {
+        if (currentMultiplier >= explosionThreshold) {
             clearInterval(interval);
-            airplane.classList.add("explode");
-            explosionTriggered = true;
-            alert("O avião explodiu! Você perdeu sua aposta.");
-            resetGame();
+            explode();
+        } else {
+            currentMultiplier += 0.05;
+            multiplierDisplay.textContent = `${currentMultiplier.toFixed(2)}x`;
+            airplane.style.left = `${currentMultiplier * 50}px`;
         }
     }, 100);
 }
 
-// Função de retirada antes da explosão
 function withdrawBet() {
-    if (betPlaced && !explosionTriggered) {
-        let winnings = betAmount * currentMultiplier;
-        balance += winnings; // Adiciona o valor ganho ao saldo
-        alert(`Você retirou com sucesso! Multiplicador: ${currentMultiplier.toFixed(1)}x`);
-        betHistory.innerHTML += `<li>Aposta de R$ ${betAmount.toFixed(2)} | Multiplicador: ${currentMultiplier.toFixed(1)}x | Ganhos: R$ ${winnings.toFixed(2)}</li>`;
-        balanceElement.textContent = `R$ ${balance.toFixed(2)}`; // Atualiza o saldo
-        resetGame();
-    }
-}
-
-// Função para resetar o jogo
-function resetGame() {
-    betAmountInput.value = '';
-    betAmount = 0;
+    if (!betPlaced) return alert("Nenhuma aposta ativa!");
     betPlaced = false;
-    explosionTriggered = false;
-    airplane.classList.remove("explode");
-    totalBetElement.textContent = "R$ 0,00";
-    multiplierElement.textContent = "1x";
+    const winnings = betAmount * currentMultiplier;
+    balance += winnings;
+
+    flightSound.pause();
+    winSound.play();
+
+    betHistory.innerHTML += `<li>Retirou em ${currentMultiplier.toFixed(2)}x e ganhou R$${winnings.toFixed(2)}</li>`;
+    updateBalance();
 }
 
-betButton.addEventListener("click", placeBet);
-resetButton.addEventListener("click", resetGame);
-withdrawButton.addEventListener("click", withdrawBet);
+function explode() {
+    flightSound.pause();
+    explosionSound.play();
+    multiplierDisplay.textContent = "Explodiu!";
+    betPlaced = false;
+    betHistory.innerHTML += `<li>Explodiu em ${currentMultiplier.toFixed(2)}x - Perdeu R$${betAmount.toFixed(2)}</li>`;
+    updateBalance();
+}
+
+// Eventos
+document.getElementById("betButton").addEventListener("click", startGame);
+document.getElementById("withdrawButton").addEventListener("click", withdrawBet);
