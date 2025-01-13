@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,17 +17,18 @@
             <div class="game-area">
                 <div id="multiplier" class="multiplier-display">1.00x</div>
                 <div id="airplane" class="airplane"></div>
+                <div class="explosion" id="explosion"></div>
             </div>
 
-            <div class="controls-section">
+            <div class="controls">
                 <button id="betButton" class="btn">Apostar</button>
                 <button id="cashOutButton" class="btn">Retirar</button>
             </div>
 
-            <div class="balance-display" id="balance">Saldo: R$100,00</div>
+            <div class="balance" id="balance">Saldo: R$100,00</div>
 
-            <div class="controls-section">
-                <button id="resetBalanceButton" class="btn btn-reset-balance">Reiniciar Saldo</button>
+            <div class="controls">
+                <button id="resetBalanceButton" class="btn btn-reset">Reiniciar Saldo</button>
             </div>
         </div>
 
@@ -41,7 +42,7 @@
             </ol>
         </div>
 
-        <div class="stats-section">
+        <div class="stats">
             <h2>Estatísticas Recentes</h2>
             <table id="statsTable">
                 <thead>
@@ -52,7 +53,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Estatísticas vão aparecer aqui -->
+                    <!-- Estatísticas serão inseridas aqui -->
                 </tbody>
             </table>
         </div>
