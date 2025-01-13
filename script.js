@@ -1,4 +1,3 @@
-
 let balance = 10000;
 let betAmount = 0.40;
 let earnings = 0;
@@ -28,7 +27,7 @@ document.getElementById("spinButton").addEventListener("click", function() {
 
   // Adicionar animação de giro da roleta
   document.querySelector(".slot-machine").classList.add("spinner");
-  
+
   setTimeout(function() {
     document.querySelector(".slot-machine").classList.remove("spinner");
   }, 3000); // Remove a animação após o giro
