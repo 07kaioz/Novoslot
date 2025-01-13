@@ -1,4 +1,12 @@
-let balance = 100.0;
+// Função para reiniciar o saldo
+function resetBalance() {
+    balance = 100.0; // Redefine o saldo para 100 reais
+    updateBalance(); // Atualiza a exibição do saldo
+    alert("Saldo reiniciado para R$100,00!");
+}
+
+// Evento do botão de reinício do saldo
+document.getElementById("resetBalanceButton").addEventListener("click", resetBalance);let balance = 100.0;
 let betAmount = 0;
 let currentMultiplier = 1.0;
 let explosionThreshold = 0;
