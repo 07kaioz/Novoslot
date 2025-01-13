@@ -1,225 +1,245 @@
+/* Resetando margens e padding */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f3f3f3;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: linear-gradient(45deg, #ff6a00, #ffcc00);
-  font-size: 16px;
-  overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    padding: 20px;
 }
 
-.game-container {
-  width: 90%;
-  max-width: 900px;
-  background-color: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+/* Container principal */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #2e2e2e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-header {
-  background-color: #6200ea;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-  border-bottom: 2px solid #fff;
+.header h1 {
+    font-size: 3rem;
+    color: #6200ea;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    animation: bounce 2s infinite;
 }
 
-header h1 {
-  font-size: 3rem;
-  letter-spacing: 2px;
+.header p {
+    font-size: 1.4rem;
+    color: #ccc;
+    animation: fadeIn 3s ease-in-out;
 }
 
-header p {
-  font-size: 1.2rem;
-  font-weight: bold;
+/* Animação de movimento da tela */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
-.game-board {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  background: linear-gradient(135deg, #f3f4f6, #e9ecef);
-  border-radius: 15px;
-  margin: 20px;
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
-.airplane img {
-  width: 300px;
-  transition: transform 0.1s ease-in-out;
-  transform-origin: center;
+/* Estilo da área do jogo */
+.game-area {
+    position: relative;
+    margin-top: 40px;
+    height: 350px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-.game-info {
-  margin-top: 30px;
-  text-align: center;
-  width: 100%;
+.sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/diagonal-hatch.png');
+    opacity: 0.4;
+    animation: skyMove 20s linear infinite;
 }
 
-.multiplier {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #6200ea;
-  margin-bottom: 20px;
+/* Animação de movimento do céu */
+@keyframes skyMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
 }
 
-input {
-  padding: 12px;
-  font-size: 1.2rem;
-  width: 120px;
-  margin-right: 20px;
-  border-radius: 10px;
-  border: 2px solid #ddd;
-  outline: none;
-  transition: border 0.3s;
+/* Controles de Aposta */
+.controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-input:focus {
-  border-color: #6200ea;
+.input-bet {
+    width: 160px;
+    padding: 12px;
+    font-size: 1.3rem;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
 }
 
-button {
-  padding: 12px 30px;
-  background-color: #6200ea;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  margin-top: 20px;
+.btn {
+    padding: 12px 30px;
+    font-size: 1.3rem;
+    background-color: #6200ea;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #3700b3;
-  transform: scale(1.1);
+.btn:hover {
+    background-color: #4b00d1;
 }
 
-button:active {
-  transform: scale(1);
+/* Animação do avião */
+@keyframes airplaneMove {
+    0% {
+        transform: translateX(-100vw) rotate(45deg);
+    }
+    50% {
+        transform: translateX(50vw) rotate(180deg);
+    }
+    100% {
+        transform: translateX(100vw) rotate(360deg);
+    }
 }
 
-button:disabled {
-  background-color: #c8c8c8;
-  cursor: not-allowed;
+@keyframes airplaneExplosion {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2) rotate(720deg);
+        opacity: 0;
+    }
 }
 
+.airplane {
+    width: 90px;
+    height: 90px;
+    background-color: #ff5722;
+    position: absolute;
+    top: 50%;
+    left: -90px;
+    border-radius: 15%;
+    transform-origin: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    animation: airplaneMove 6s linear infinite;
+}
+
+.airplane.explode {
+    animation: airplaneExplosion 1s forwards;
+}
+
+/* Exibição de Informações */
+.info {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: bold;
+}
+
+.info span {
+    color: #ff5722;
+}
+
+/* Estilo do histórico de apostas */
 .history {
-  width: 100%;
-  background-color: #fafafa;
-  padding: 20px;
-  border-radius: 15px;
-  margin-top: 30px;
+    margin-top: 30px;
+    background-color: #2f2f2f;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .history h3 {
-  font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #6200ea;
+    margin-bottom: 10px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-ul li {
-  font-size: 1.2rem;
-  color: #333;
-  background-color: #e9ecef;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-ul li:nth-child(odd) {
-  background-color: #f1f1f1;
-}
-
-ul li:hover {
-  background-color: #dcdcdc;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #6200ea;
-  color: #fff;
-  border-top: 2px solid #fff;
-}
-
-footer p {
-  font-size: 1.2rem;
-}
-
-@media (max-width: 768px) {
-  .game-container {
-    width: 100%;
-    margin: 0;
-  }
-
-  .airplane img {
-    width: 200px;
-  }
-
-  .game-info {
-    margin-top: 20px;
-  }
-
-  input {
-    width: 100px;
-  }
-
-  button {
-    padding: 10px 20px;
+#betHistory {
+    list-style: none;
     font-size: 1.2rem;
-  }
-
-  .multiplier {
-    font-size: 2.5rem;
-  }
+    text-align: left;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-left: 0;
 }
 
-@keyframes fly {
-  0% {
-    transform: translateX(-100vw);
-  }
-  100% {
-    transform: translateX(100vw);
-  }
+#betHistory li {
+    background-color: #e1e1e1;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-@keyframes popIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* Botão de Resetar */
+.btn-reset {
+    padding: 12px 25px;
+    background-color: #ff5722;
+    color: #fff;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-@keyframes airplaneMove {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-30px) rotate(5deg);
-  }
-  100% {
-    transform: translateY(0) rotate(-5deg);
-  }
+.btn-reset:hover {
+    background-color: #e64a19;
+}
+
+/* Efeitos de hover para os botões */
+#betButton:hover, #withdrawButton:hover, #resetButton:hover {
+    transform: scale(1.05);
+    background-color: #4b00d1;
+}
+
+/* Efeitos de animação suave */
+.airplane {
+    animation: airplaneMove 6s linear infinite;
 }
