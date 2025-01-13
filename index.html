@@ -1,68 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aviator Game</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Meu Site no GitHub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 class="title">Aviator Game</h1>
-            <p class="subtitle">Teste sua sorte e veja até onde o avião pode ir!</p>
-        </header>
+    <header>
+        <h1>Bem-vindo ao Meu Site!</h1>
+        <p>Este é um site simples criado para o GitHub Pages</p>
+    </header>
 
-        <div class="game-section">
-            <div class="game-area">
-                <div id="multiplier" class="multiplier-display">1.00x</div>
-                <div id="airplane" class="airplane"></div>
-                <div class="explosion" id="explosion"></div>
-            </div>
+    <section class="content">
+        <h2>Interatividade com JavaScript</h2>
+        <button id="mostrarMensagem">Clique para mostrar mensagem</button>
+        <div id="mensagem"></div>
+    </section>
 
-            <div class="controls">
-                <button id="betButton" class="btn">Apostar</button>
-                <button id="cashOutButton" class="btn">Retirar</button>
-            </div>
-
-            <div class="balance" id="balance">Saldo: R$100,00</div>
-
-            <div class="controls">
-                <button id="resetBalanceButton" class="btn btn-reset">Reiniciar Saldo</button>
-            </div>
-        </div>
-
-        <div class="instructions">
-            <h2>Como jogar</h2>
-            <ol>
-                <li>Clique em "Apostar" para iniciar o jogo.</li>
-                <li>O multiplicador começará a aumentar conforme o avião sobe.</li>
-                <li>Clique em "Retirar" antes do avião explodir para garantir seus ganhos.</li>
-                <li>Se você não retirar a tempo, perderá sua aposta.</li>
-            </ol>
-        </div>
-
-        <div class="stats">
-            <h2>Estatísticas Recentes</h2>
-            <table id="statsTable">
-                <thead>
-                    <tr>
-                        <th>Rodada</th>
-                        <th>Multiplicador</th>
-                        <th>Resultado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Estatísticas serão inseridas aqui -->
-                </tbody>
-            </table>
-        </div>
-
-        <footer>
-            <p>Copyright © 2025. Todos os direitos reservados.</p>
-            <p>Desenvolvido para fins educacionais e recreativos.</p>
-        </footer>
-    </div>
+    <footer>
+        <p>© 2025 Meu Site. Todos os direitos reservados.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
